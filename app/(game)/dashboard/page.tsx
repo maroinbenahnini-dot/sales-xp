@@ -4,9 +4,10 @@ import { getAllScenarios } from '@/lib/game/scenarios'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { buttonVariants } from '@/components/ui/button'
 import { computeXpProgress } from '@/lib/game/xp'
 import { cn } from '@/lib/utils'
+
+const btnClass = "inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm font-medium px-4 py-2 transition-colors hover:bg-primary/90"
 import type { UserProfile } from '@/types/game'
 
 const THEME_LABELS: Record<string, string> = {
@@ -113,7 +114,7 @@ export default async function DashboardPage() {
             </div>
             <Link
               href={`/scenario/${inProgressScenario.id}`}
-              className={cn(buttonVariants(), 'shrink-0')}
+              className={cn(btnClass, 'shrink-0')}
             >
               Reprendre →
             </Link>
@@ -128,7 +129,7 @@ export default async function DashboardPage() {
           <p className="text-muted-foreground text-sm">
             Choisis un scénario et commence ton aventure commerciale.
           </p>
-          <Link href="/library" className={cn(buttonVariants(), 'mt-2')}>
+          <Link href="/library" className={cn(btnClass, 'mt-2')}>
             Voir la bibliothèque →
           </Link>
         </div>
