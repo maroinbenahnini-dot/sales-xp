@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
+import { LogoutButton } from './logout-button'
 import { useUserStore } from '@/store/user'
 import { computeXpProgress } from '@/lib/game/xp'
 
@@ -45,6 +46,8 @@ export function XpBar() {
             {user.username}
           </span>
         </div>
+
+        <LogoutButton />
       </div>
     </header>
   )

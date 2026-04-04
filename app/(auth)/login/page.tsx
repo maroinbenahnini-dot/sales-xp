@@ -1,12 +1,16 @@
+import { LoginForm } from '@/components/auth/login-form'
+
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-md px-6">
-        <h1 className="text-3xl font-bold text-center mb-2">SalesXP</h1>
-        <p className="text-muted-foreground text-center mb-8">
-          Maîtrise la vente complexe en ESN
-        </p>
-        {/* LoginForm — à implémenter */}
+      <div className="w-full max-w-sm px-6">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold tracking-tight">SalesXP</h1>
+          <p className="text-muted-foreground mt-2">
+            Maîtrise la vente complexe en ESN
+          </p>
+        </div>
+        <LoginForm />
       </div>
     </div>
   )
