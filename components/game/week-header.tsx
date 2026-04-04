@@ -4,21 +4,20 @@ import { useTransition } from 'react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { useScenarioStore } from '@/store/scenario'
-import { useUserStore } from '@/store/user'
 
 interface Props {
   scenarioId: string
   runId: string
   totalWeeks: number
-  onWeekAdvanced: (result: { completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number }) => void
+  currentWeek: number
+  actionsRemaining: number
+  onWeekAdvanced: (result: {
+    completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number; current_week?: number
+  }) => void
 }
 
-export function WeekHeader({ scenarioId, runId, totalWeeks, onWeekAdvanced }: Props) {
+export function WeekHeader({ scenarioId, runId, totalWeeks, currentWeek, actionsRemaining, onWeekAdvanced }: Props) {
   const [isPending, startTransition] = useTransition()
-  const { currentWeek, actionsRemaining, advanceWeek } = useScenarioStore()
-  const addXp = useUserStore(s => s.addXp)
-
   const weekProgress = ((currentWeek - 1) / totalWeeks) * 100
 
   function handleAdvance() {
@@ -35,14 +34,7 @@ export function WeekHeader({ scenarioId, runId, totalWeeks, onWeekAdvanced }: Pr
       }
 
       const data = await res.json()
-
-      if (data.completed) {
-        if (data.xp_earned) addXp(data.xp_earned)
-        onWeekAdvanced(data)
-      } else {
-        advanceWeek()
-        onWeekAdvanced(data)
-      }
+      onWeekAdvanced(data)
     })
   }
 
@@ -51,16 +43,14 @@ export function WeekHeader({ scenarioId, runId, totalWeeks, onWeekAdvanced }: Pr
       <div className="flex-1">
         <div className="flex justify-between text-sm mb-1.5">
           <span className="font-medium">Semaine {currentWeek} / {totalWeeks}</span>
-          <span className="text-muted-foreground">{actionsRemaining} action{actionsRemaining > 1 ? 's' : ''} restante{actionsRemaining > 1 ? 's' : ''}</span>
+          <span className="text-muted-foreground">
+            {actionsRemaining} action{actionsRemaining > 1 ? 's' : ''} restante{actionsRemaining > 1 ? 's' : ''}
+          </span>
         </div>
         <Progress value={weekProgress} className="h-2" />
       </div>
 
-      <Button
-        onClick={handleAdvance}
-        disabled={isPending}
-        size="sm"
-      >
+      <Button onClick={handleAdvance} disabled={isPending} size="sm">
         {isPending ? '…' : currentWeek >= totalWeeks ? 'Terminer' : 'Semaine suivante →'}
       </Button>
     </div>

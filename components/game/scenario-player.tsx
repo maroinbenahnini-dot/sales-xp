@@ -1,13 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { useScenarioStore } from '@/store/scenario'
 import { AccountMap } from './account-map'
 import { ActionPanel } from './action-panel'
 import { WeekHeader } from './week-header'
-import { buildInitialState } from '@/lib/game/scenario-engine'
 import type { Scenario, ScenarioRunState } from '@/types/game'
 
 interface Props {
@@ -19,14 +17,21 @@ interface Props {
 
 export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: Props) {
   const router = useRouter()
-  const { initScenario, state } = useScenarioStore()
-  const [ending, setEnding] = useState<{ score: number; narrative: string; xp_earned: number; result: string } | null>(null)
+  const [gameState, setGameState] = useState<ScenarioRunState>(initialState)
+  const [currentWeek, setCurrentWeek] = useState(initialWeek)
+  const [actionsRemaining, setActionsRemaining] = useState(scenario.actions_per_week)
+  const [ending, setEnding] = useState<{
+    score: number; narrative: string; xp_earned: number; result: string
+  } | null>(null)
 
-  useEffect(() => {
-    initScenario(scenario, runId, initialState, initialWeek)
-  }, [scenario, runId, initialState, initialWeek, initScenario])
+  function handleActionDone(newState: ScenarioRunState, cost: number) {
+    setGameState(newState)
+    setActionsRemaining(prev => Math.max(0, prev - cost))
+  }
 
-  function handleWeekAdvanced(result: { completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number }) {
+  function handleWeekAdvanced(result: {
+    completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number; current_week?: number
+  }) {
     if (result.completed && result.score !== undefined) {
       setEnding({
         score: result.score,
@@ -34,10 +39,11 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
         xp_earned: result.xp_earned ?? 0,
         result: result.ending ?? 'pending',
       })
+    } else if (result.current_week) {
+      setCurrentWeek(result.current_week)
+      setActionsRemaining(scenario.actions_per_week)
     }
   }
-
-  if (!state) return null
 
   return (
     <div className="space-y-6">
@@ -46,7 +52,9 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="font-semibold text-lg">{scenario.title}</h2>
-            <p className="text-sm text-muted-foreground mt-1">{scenario.context.company} · {scenario.context.industry}</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {scenario.context.company} · {scenario.context.industry}
+            </p>
           </div>
           <div className="text-right shrink-0">
             <p className="text-sm font-medium">{scenario.context.deal_size}</p>
@@ -63,13 +71,18 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
         scenarioId={scenario.id}
         runId={runId}
         totalWeeks={scenario.duration_weeks}
+        currentWeek={currentWeek}
+        actionsRemaining={actionsRemaining}
         onWeekAdvanced={handleWeekAdvanced}
       />
 
       {/* Account map */}
       <section>
         <h3 className="font-semibold mb-3">Carte du compte</h3>
-        <AccountMap stakeholders={scenario.stakeholders} states={state.stakeholders} />
+        <AccountMap
+          stakeholders={scenario.stakeholders}
+          states={gameState.stakeholders}
+        />
       </section>
 
       {/* Actions */}
@@ -77,7 +90,8 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
         <ActionPanel
           scenario={scenario}
           runId={runId}
-          onActionDone={() => {}}
+          actionsRemaining={actionsRemaining}
+          onActionDone={handleActionDone}
         />
       </section>
 

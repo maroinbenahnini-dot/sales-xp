@@ -6,8 +6,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { useScenarioStore } from '@/store/scenario'
-import type { ActionType, ActionChoice, Scenario } from '@/types/game'
+import type { ActionType, ActionChoice, Scenario, ScenarioRunState } from '@/types/game'
 
 const ACTION_LABELS: Record<ActionType, string> = {
   email: '✉️ Email',
@@ -21,25 +20,26 @@ const ACTION_LABELS: Record<ActionType, string> = {
 interface Props {
   scenario: Scenario
   runId: string
-  onActionDone: () => void
+  actionsRemaining: number
+  onActionDone: (newState: ScenarioRunState, cost: number) => void
 }
 
-export function ActionPanel({ scenario, runId, onActionDone }: Props) {
+export function ActionPanel({ scenario, runId, actionsRemaining, onActionDone }: Props) {
   const [selectedType, setSelectedType] = useState<ActionType | null>(null)
+  const [lastFeedback, setLastFeedback] = useState<ActionChoice['feedback'] | null>(null)
   const [isPending, startTransition] = useTransition()
-  const { actionsRemaining, consumeAction, applyActionResult, clearFeedback, lastFeedback, state } = useScenarioStore()
 
   const availableActions = Object.entries(scenario.actions) as [ActionType, typeof scenario.actions[ActionType]][]
 
   function selectAction(type: ActionType) {
-    clearFeedback()
+    setLastFeedback(null)
     setSelectedType(type === selectedType ? null : type)
   }
 
   function submitChoice(actionType: ActionType, choice: ActionChoice) {
     const action = scenario.actions[actionType]
     if (actionsRemaining < action.cost) {
-      toast.error('Plus assez d\'actions cette semaine')
+      toast.error("Plus assez d'actions cette semaine")
       return
     }
 
@@ -51,31 +51,31 @@ export function ActionPanel({ scenario, runId, onActionDone }: Props) {
       })
 
       if (!res.ok) {
-        toast.error('Erreur lors de l\'action')
+        toast.error("Erreur lors de l'action")
         return
       }
 
       const data = await res.json()
-      applyActionResult(data.effects, data.feedback)
-      consumeAction(action.cost)
+      setLastFeedback(data.feedback)
       setSelectedType(null)
-      onActionDone()
+      onActionDone(data.state, action.cost)
     })
   }
 
   return (
     <div className="space-y-4">
-      {/* Actions budget */}
       <div className="flex items-center justify-between">
         <h3 className="font-semibold">Actions disponibles</h3>
-        <div className="flex gap-1">
-          {Array.from({ length: scenario.actions_per_week }).map((_, i) => (
-            <div
-              key={i}
-              className={`size-3 rounded-full ${i < actionsRemaining ? 'bg-primary' : 'bg-muted'}`}
-            />
-          ))}
-          <span className="ml-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1">
+            {Array.from({ length: scenario.actions_per_week }).map((_, i) => (
+              <div
+                key={i}
+                className={`size-3 rounded-full ${i < actionsRemaining ? 'bg-primary' : 'bg-muted'}`}
+              />
+            ))}
+          </div>
+          <span className="text-sm text-muted-foreground">
             {actionsRemaining}/{scenario.actions_per_week}
           </span>
         </div>
@@ -144,7 +144,7 @@ export function ActionPanel({ scenario, runId, onActionDone }: Props) {
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-medium">{lastFeedback.result}</p>
                   <button
-                    onClick={clearFeedback}
+                    onClick={() => setLastFeedback(null)}
                     className="text-muted-foreground hover:text-foreground text-lg leading-none shrink-0"
                   >
                     ×
@@ -153,9 +153,7 @@ export function ActionPanel({ scenario, runId, onActionDone }: Props) {
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
-                    Pourquoi
-                  </p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Pourquoi</p>
                   <p>{lastFeedback.explanation}</p>
                 </div>
                 <div>
