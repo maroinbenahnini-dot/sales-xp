@@ -1,0 +1,10 @@
+project:
+  name: "SalesXP"
+  description: "Application gamifiée d'entraînement à la vente complexe pour les Sales en ESN"
+  language: "fr"
+  docs_path: "docs"
+
+agents:
+  analyst: ".bmad/bmm/agents/analyst.md"
+  pm: ".bmad/bmm/agents/pm.md"
+  architect: ".bmad/bmm/agents/architect.md"
