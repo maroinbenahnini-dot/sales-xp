@@ -1,0 +1,306 @@
+{
+  "id": "ACT2-S1",
+  "title": "La Grande Migration",
+  "act": 2,
+  "theme": "cloud",
+  "difficulty": "medium",
+  "duration_weeks": 10,
+  "actions_per_week": 4,
+  "context": {
+    "company": "ManufactureOne SA",
+    "industry": "Industrie manufacturière",
+    "deal_size": "420k€",
+    "brief": "ManufactureOne SA est un groupe industriel de 3 500 salariés qui veut migrer ses 18 applications métier vers Azure. Le DSI sortant a lancé l'AO en catastrophe avant son départ — son successeur, Pierre Canet, vient d'arriver et remet tout en question. Les anciens prestataires tentent de conserver le marché. Tu dois convaincre une organisation divisée, un DSI méfiant et un DAF qui tient les cordons de la bourse."
+  },
+  "stakeholders": [
+    {
+      "id": "pierre_c",
+      "name": "Pierre Canet",
+      "role": "DSI (nouveau)",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Marquer son arrivée avec un projet structurant et visible",
+      "hidden_fear": "A peur d'être associé à un projet mal cadré lancé par son prédécesseur",
+      "preferred_channel": "meeting",
+      "initial_relation": 15
+    },
+    {
+      "id": "nathalie_b",
+      "name": "Nathalie Bertrand",
+      "role": "DAF",
+      "influence": 4,
+      "type": "decision_maker",
+      "visible_motivation": "Maîtriser les coûts et obtenir un ROI mesurable sous 18 mois",
+      "hidden_fear": "Redoute les dépassements de budget et les projets IT sans fin",
+      "preferred_channel": "lunch",
+      "initial_relation": 20
+    },
+    {
+      "id": "sami_l",
+      "name": "Sami Lahlou",
+      "role": "Responsable Infrastructure",
+      "influence": 3,
+      "type": "blocker",
+      "visible_motivation": "Assurer la stabilité de la production pendant la migration",
+      "hidden_fear": "Peur de perdre son équipe et son expertise si tout passe dans le cloud",
+      "preferred_channel": "meeting",
+      "initial_relation": 10
+    },
+    {
+      "id": "carole_m",
+      "name": "Carole Moulin",
+      "role": "Chef de Projet Transformation",
+      "influence": 3,
+      "type": "champion",
+      "visible_motivation": "Livrer un projet de transformation réussi pour évoluer",
+      "hidden_fear": "Manque de visibilité sur le planning réel et les risques",
+      "preferred_channel": "email",
+      "initial_relation": 45
+    },
+    {
+      "id": "franck_d",
+      "name": "Franck Duval",
+      "role": "Directeur Général",
+      "influence": 4,
+      "type": "influencer",
+      "visible_motivation": "Digitaliser l'entreprise pour rester compétitif",
+      "hidden_fear": "Ne veut pas de polémique interne — la cohésion sociale prime",
+      "preferred_channel": "event_response",
+      "initial_relation": 30
+    },
+    {
+      "id": "laure_v",
+      "name": "Laure Vidal",
+      "role": "Responsable Cybersécurité",
+      "influence": 2,
+      "type": "influencer",
+      "visible_motivation": "Garantir la sécurité et la conformité RGPD du projet",
+      "hidden_fear": "Craint que la vitesse du projet ne compromette la sécurité",
+      "preferred_channel": "email",
+      "initial_relation": 25
+    }
+  ],
+  "actions": {
+    "email": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "email_roi",
+          "label": "Envoyer un benchmark ROI cloud vs on-premise sur 3 ans",
+          "effects": { "nathalie_b": 15, "pierre_c": 8, "franck_d": 5 },
+          "feedback": {
+            "result": "Nathalie Bertrand a partagé ton analyse avec le CODIR — la DAF est devenue ton alliée.",
+            "explanation": "Les DAF sont sensibles aux chiffres concrets. Un TCO (Total Cost of Ownership) bien construit sur 3 ans répond directement à leur besoin de prévisibilité.",
+            "optimal": "Toujours personnaliser le ROI avec les données spécifiques du client — ici la facture infra actuelle de ManufactureOne.",
+            "skill": "financial_framing"
+          }
+        },
+        {
+          "id": "email_planning",
+          "label": "Envoyer un planning de migration en 3 phases avec jalons",
+          "effects": { "carole_m": 18, "pierre_c": 10, "laure_v": 8 },
+          "feedback": {
+            "result": "Carole Moulin a imprimé ton planning et l'a affiché dans la salle de projet.",
+            "explanation": "Un planning structuré rassure les chefs de projet et les décideurs qui craignent le flou. Les jalons mesurables permettent à Carole de défendre le projet en interne.",
+            "optimal": "Inclure des points de sortie (go/no-go) à chaque phase — cela rassure les DAF et DSI méfiants.",
+            "skill": "project_framing"
+          }
+        },
+        {
+          "id": "email_generic",
+          "label": "Envoyer une présentation générique de ton offre cloud",
+          "effects": { "pierre_c": 2, "carole_m": 2 },
+          "feedback": {
+            "result": "Réponse polie mais sans engagement. Pierre Canet n'a pas transmis l'email.",
+            "explanation": "Un pitch générique ne répond pas aux enjeux spécifiques d'une organisation en pleine transition managériale. Le nouveau DSI veut se sentir compris, pas noyé sous du contenu commercial.",
+            "optimal": "Personnalise chaque email avec un élément de contexte propre au client — ici l'arrivée récente du DSI et l'AO lancée par son prédécesseur.",
+            "skill": "personalization"
+          }
+        }
+      ]
+    },
+    "meeting_request": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "meeting_discovery",
+          "label": "Atelier de découverte avec Pierre Canet : cartographie du SI existant",
+          "effects": { "pierre_c": 20, "sami_l": 10, "carole_m": 8 },
+          "feedback": {
+            "result": "Pierre Canet t'a confié ses vraies inquiétudes sur le projet de son prédécesseur. Il commence à te faire confiance.",
+            "explanation": "Un atelier de découverte positionne le sales comme partenaire stratégique plutôt que simple fournisseur. Il permet au nouveau DSI de recadrer le projet à sa façon — ce qui lui donne un sentiment de contrôle.",
+            "optimal": "Prépare des questions ouvertes sur la dette technique, les priorités métier et les quick wins possibles. Évite de proposer des solutions avant d'avoir écouté.",
+            "skill": "discovery"
+          }
+        },
+        {
+          "id": "meeting_sami",
+          "label": "Point technique avec Sami Lahlou : architecture cible et montée en compétences",
+          "effects": { "sami_l": 25, "pierre_c": 5, "laure_v": 10 },
+          "feedback": {
+            "result": "Sami a changé de ton — il commence à voir la migration comme une opportunité plutôt qu'une menace pour son équipe.",
+            "explanation": "Le blocage de Sami est émotionnel autant que technique. En lui proposant une montée en compétences Azure Certified pour son équipe, tu transformes la menace perçue en opportunité d'évolution.",
+            "optimal": "Propose systématiquement un plan de transition des compétences pour les équipes internes dans les projets cloud — c'est un win-win qui débloque souvent les résistances.",
+            "skill": "stakeholder_alignment"
+          }
+        },
+        {
+          "id": "meeting_dg",
+          "label": "Déjeuner avec Franck Duval pour aligner la vision stratégique",
+          "effects": { "franck_d": 20, "pierre_c": 8, "nathalie_b": 5 },
+          "feedback": {
+            "result": "Franck Duval t'a demandé de présenter le projet au CODIR du mois prochain.",
+            "explanation": "Le DG fixe le cap mais délègue l'opérationnel. En alignant ta proposition sur la vision de compétitivité digitale, tu crées un momentum top-down qui facilite l'engagement des autres parties prenantes.",
+            "optimal": "Prépare une slide 'impact business' en 3 points maximum — les DG n'ont pas le temps pour les détails techniques.",
+            "skill": "executive_engagement"
+          }
+        }
+      ]
+    },
+    "lunch": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "lunch_nathalie",
+          "label": "Déjeuner avec Nathalie pour structurer un business case solide",
+          "effects": { "nathalie_b": 20, "pierre_c": 6, "franck_d": 5 },
+          "feedback": {
+            "result": "Nathalie a accepté de porter le projet en CODIR si tu lui fournis le modèle financier.",
+            "explanation": "En impliquant la DAF dans la construction du business case, tu en fais une co-auteure — et donc une défenseure naturelle du projet en interne.",
+            "optimal": "Propose un modèle Excel partagé avec des hypothèses modifiables — la DAF pourra l'adapter et se l'approprier.",
+            "skill": "financial_framing"
+          }
+        },
+        {
+          "id": "lunch_carole",
+          "label": "Café avec Carole pour co-construire le plan de conduite du changement",
+          "effects": { "carole_m": 15, "sami_l": 8 },
+          "feedback": {
+            "result": "Carole t'a partagé les résistances internes et les équipes clés à embarquer.",
+            "explanation": "La chef de projet est souvent le meilleur informateur sur la politique interne. Co-construire le plan de change management avec elle renforce son leadership et ton positionnement.",
+            "optimal": "Demande-lui qui sont les 'early adopters' dans les équipes — ce sont eux qu'il faut convaincre en premier.",
+            "skill": "change_management"
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "proposal_phased",
+          "label": "Proposer une approche en 3 phases avec une preuve de valeur rapide (Pilot d'un domaine métier)",
+          "effects": { "pierre_c": 18, "nathalie_b": 15, "sami_l": 12, "carole_m": 8 },
+          "feedback": {
+            "result": "Le Pilot a été validé. Pierre Canet a soumis la proposition à son CODIR.",
+            "explanation": "Une approche phasée avec un Pilot limité réduit le risque perçu pour les décideurs. Elle permet de démontrer la valeur rapidement tout en laissant les portes ouvertes pour ajuster.",
+            "optimal": "Choisis un périmètre Pilot où tu es sûr de réussir vite — idéalement une application non-critique avec un ROI visible en 2-3 mois.",
+            "skill": "deal_structuring"
+          }
+        },
+        {
+          "id": "proposal_big_bang",
+          "label": "Proposer une migration complète en 12 mois avec garantie de résultats",
+          "effects": { "pierre_c": -5, "nathalie_b": -10, "sami_l": -15 },
+          "feedback": {
+            "result": "Pierre Canet t'a remercié pour la proposition mais demande plus de temps pour réfléchir.",
+            "explanation": "Un projet big bang effraie les nouveaux DSI qui cherchent à éviter les risques. Garantir des résultats sur 12 mois sans Pilot est perçu comme commercial mais peu crédible.",
+            "optimal": "Décompose toujours un grand projet en phases avec des livrables intermédiaires et des points de sortie explicites.",
+            "skill": "deal_structuring"
+          }
+        },
+        {
+          "id": "proposal_security_first",
+          "label": "Mettre la sécurité et la conformité en avant dans la proposition",
+          "effects": { "laure_v": 20, "pierre_c": 8, "nathalie_b": 5 },
+          "feedback": {
+            "result": "Laure Vidal est devenue ton ambassadrice auprès de la DSI.",
+            "explanation": "Dans les projets cloud, la cybersécurité est souvent le dernier frein avant la signature. En traitant ce sujet en tête de proposition, tu neutralises une objection critique et tu crées un allié inattendu.",
+            "optimal": "Intègre un chapitre RGPD + certifications cloud dans toutes tes propositions cloud — c'est rarement fait par les concurrents.",
+            "skill": "objection_handling"
+          }
+        }
+      ]
+    },
+    "reference_visit": {
+      "cost": 3,
+      "choices": [
+        {
+          "id": "ref_industry",
+          "label": "Organiser une visite chez un client industriel qui a migré avec toi",
+          "effects": { "pierre_c": 22, "sami_l": 18, "nathalie_b": 12 },
+          "feedback": {
+            "result": "La visite chez ArcelorGroup a convaincu Sami — il a vu ses homologues heureux de la migration.",
+            "explanation": "La preuve par les pairs est le mécanisme de réassurance le plus puissant, surtout pour les équipes techniques qui craignent le changement. Un responsable infra qui parle à un autre responsable infra vaut plus que 10 slides.",
+            "optimal": "Prépare la visite en briefant ton client de référence sur les points de résistance spécifiques (ici : crainte de perte d'expertise). Il parlera aux bons sujets.",
+            "skill": "social_proof"
+          }
+        },
+        {
+          "id": "ref_generic",
+          "label": "Envoyer des case studies clients par email",
+          "effects": { "pierre_c": 5, "nathalie_b": 5 },
+          "feedback": {
+            "result": "Les case studies ont été lus mais n'ont pas eu d'impact fort.",
+            "explanation": "Les case studies écrits manquent d'authenticité et sont souvent perçus comme du marketing. Une visite physique ou un appel avec un vrai client crée une connexion humaine impossible à simuler sur papier.",
+            "optimal": "Propose systématiquement un appel de 20 minutes avec un client référence plutôt qu'un document statique.",
+            "skill": "social_proof"
+          }
+        }
+      ]
+    },
+    "event_response": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "event_codir",
+          "label": "Préparer une présentation CODIR percutante avec Franck pour next month",
+          "effects": { "franck_d": 15, "pierre_c": 10, "nathalie_b": 8 },
+          "feedback": {
+            "result": "La présentation CODIR a été un succès. Le projet cloud est maintenant une priorité officielle de la direction.",
+            "explanation": "Transformer un projet IT en priorité de direction change la dynamique interne. Les parties prenantes sceptiques ont beaucoup plus de mal à bloquer un projet qui a le soutien explicite du DG.",
+            "optimal": "Structure la présentation CODIR en 3 slides : enjeu business, proposition de valeur, prochaines étapes avec dates concrètes.",
+            "skill": "executive_engagement"
+          }
+        },
+        {
+          "id": "event_workshop",
+          "label": "Organiser un workshop de 2h avec toutes les parties prenantes",
+          "effects": { "pierre_c": 12, "sami_l": 10, "carole_m": 15, "laure_v": 10, "nathalie_b": 8 },
+          "feedback": {
+            "result": "Le workshop a aligné tout le monde sur une vision commune — les tensions internes ont diminué.",
+            "explanation": "Un workshop collectif crée un espace de dialogue qui désamorce les tensions entre DSI, DAF et équipes techniques. Il positionne ton équipe comme facilitateur neutre plutôt que comme vendeur.",
+            "optimal": "Anime le workshop avec un outil collaboratif type Miro. Fais émerger les priorités du groupe plutôt que d'imposer les tiennes.",
+            "skill": "facilitation"
+          }
+        }
+      ]
+    }
+  },
+  "endings": {
+    "won": {
+      "condition": "average_relation >= 60 AND pierre_c.relation >= 65 AND nathalie_b.relation >= 55",
+      "narrative": "Pierre Canet a signé le bon de commande en présence de Nathalie Bertrand. Il t'a confié : 'Tu es le seul à avoir vraiment compris ce que je voulais faire avec ce projet.' Le deal à 420k€ ouvre la voie à un partenariat stratégique avec ManufactureOne.",
+      "xp": 700,
+      "badges": ["cloud_expert", "five_wins"],
+      "carry_over": {
+        "ManufactureOne_champion": "carole_m",
+        "industrie_reputation": "+15"
+      }
+    },
+    "lost": {
+      "condition": "pierre_c.relation < 40 OR nathalie_b.relation < 30",
+      "narrative": "ManufactureOne a retenu le prestataire sortant, qui a su mieux rassurer le nouveau DSI. Pierre Canet t'a dit : 'Votre offre était intéressante mais nous avons besoin d'un partenaire qui nous connaît déjà.'",
+      "xp": 180,
+      "badges": [],
+      "carry_over": {}
+    },
+    "pending": {
+      "condition": "average_relation >= 45",
+      "narrative": "Le CODIR de ManufactureOne délibère encore. Nathalie Bertrand a demandé un dernier point pour comparer les offres.",
+      "xp": 300,
+      "badges": [],
+      "carry_over": {}
+    }
+  }
+}
