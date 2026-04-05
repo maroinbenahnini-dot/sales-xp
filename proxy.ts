@@ -17,9 +17,13 @@ export async function proxy(request: NextRequest) {
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
+          cookiesToSet.forEach(({ name, value, options }) => {
+            // Sur HTTP local, on retire le flag Secure pour que Safari mobile accepte les cookies
+            const safeOptions = process.env.NODE_ENV === 'development'
+              ? { ...options, secure: false, sameSite: 'lax' as const }
+              : options
+            supabaseResponse.cookies.set(name, value, safeOptions)
+          })
         },
       },
     }

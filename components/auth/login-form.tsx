@@ -1,6 +1,6 @@
 'use client'
 
-import { useTransition } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -8,11 +8,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { login } from '@/lib/auth/actions'
+import { createClient } from '@/lib/supabase/client'
 import { loginSchema, type LoginInput } from '@/lib/auth/schemas'
 
 export function LoginForm() {
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
 
   const {
     register,
@@ -20,19 +20,24 @@ export function LoginForm() {
     formState: { errors },
   } = useForm<LoginInput>({ resolver: zodResolver(loginSchema) })
 
-  function onSubmit(data: LoginInput) {
-    startTransition(async () => {
-      const formData = new FormData()
-      formData.set('email', data.email)
-      formData.set('password', data.password)
-
-      const result = await login(formData)
-      if (result?.error) {
-        toast.error(result.error)
-      } else if (result?.redirectTo) {
-        window.location.href = result.redirectTo
+  async function onSubmit(data: LoginInput) {
+    setIsPending(true)
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      })
+      if (error) {
+        toast.error('Email ou mot de passe incorrect.')
+        setIsPending(false)
+      } else {
+        window.location.href = '/dashboard'
       }
-    })
+    } catch {
+      toast.error('Erreur de connexion.')
+      setIsPending(false)
+    }
   }
 
   return (

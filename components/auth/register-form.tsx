@@ -1,6 +1,6 @@
 'use client'
 
-import { useTransition } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -8,11 +8,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { register as registerAction } from '@/lib/auth/actions'
+import { createClient } from '@/lib/supabase/client'
 import { registerSchema, type RegisterInput } from '@/lib/auth/schemas'
 
 export function RegisterForm() {
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
 
   const {
     register,
@@ -20,20 +20,29 @@ export function RegisterForm() {
     formState: { errors },
   } = useForm<RegisterInput>({ resolver: zodResolver(registerSchema) })
 
-  function onSubmit(data: RegisterInput) {
-    startTransition(async () => {
-      const formData = new FormData()
-      formData.set('username', data.username)
-      formData.set('email', data.email)
-      formData.set('password', data.password)
-
-      const result = await registerAction(formData)
-      if (result?.error) {
-        toast.error(result.error)
-      } else if (result?.redirectTo) {
-        window.location.href = result.redirectTo
+  async function onSubmit(data: RegisterInput) {
+    setIsPending(true)
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: { data: { username: data.username } },
+      })
+      if (error) {
+        if (error.message?.includes('already')) {
+          toast.error('Un compte existe déjà avec cet email.')
+        } else {
+          toast.error('Erreur lors de la création du compte.')
+        }
+        setIsPending(false)
+      } else {
+        window.location.href = '/dashboard'
       }
-    })
+    } catch {
+      toast.error('Erreur de connexion.')
+      setIsPending(false)
+    }
   }
 
   return (
