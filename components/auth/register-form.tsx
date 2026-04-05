@@ -8,11 +8,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { createClient } from '@/lib/supabase/client'
 import { registerSchema, type RegisterInput } from '@/lib/auth/schemas'
 
 export function RegisterForm() {
   const [isPending, setIsPending] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   const {
     register,
@@ -22,25 +22,24 @@ export function RegisterForm() {
 
   async function onSubmit(data: RegisterInput) {
     setIsPending(true)
+    setErrorMsg(null)
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: { data: { username: data.username } },
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: data.email, password: data.password, username: data.username }),
       })
-      if (error) {
-        if (error.message?.includes('already')) {
-          toast.error('Un compte existe déjà avec cet email.')
-        } else {
-          toast.error('Erreur lors de la création du compte.')
-        }
+      const json = await res.json()
+      if (!res.ok) {
+        setErrorMsg(json.error ?? 'Erreur de connexion.')
+        toast.error(json.error ?? 'Erreur de connexion.')
         setIsPending(false)
       } else {
         window.location.href = '/dashboard'
       }
     } catch {
-      toast.error('Erreur de connexion.')
+      setErrorMsg('Impossible de contacter le serveur.')
+      toast.error('Impossible de contacter le serveur.')
       setIsPending(false)
     }
   }
@@ -87,6 +86,10 @@ export function RegisterForm() {
           <p className="text-xs text-destructive">{errors.password.message}</p>
         )}
       </div>
+
+      {errorMsg && (
+        <p className="text-sm text-destructive font-medium">{errorMsg}</p>
+      )}
 
       <Button type="submit" className="w-full" disabled={isPending}>
         {isPending ? 'Création…' : 'Créer mon compte'}

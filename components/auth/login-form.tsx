@@ -8,11 +8,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { createClient } from '@/lib/supabase/client'
 import { loginSchema, type LoginInput } from '@/lib/auth/schemas'
 
 export function LoginForm() {
   const [isPending, setIsPending] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   const {
     register,
@@ -22,20 +22,24 @@ export function LoginForm() {
 
   async function onSubmit(data: LoginInput) {
     setIsPending(true)
+    setErrorMsg(null)
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: data.email, password: data.password }),
       })
-      if (error) {
-        toast.error('Email ou mot de passe incorrect.')
+      const json = await res.json()
+      if (!res.ok) {
+        setErrorMsg(json.error ?? 'Erreur de connexion.')
+        toast.error(json.error ?? 'Erreur de connexion.')
         setIsPending(false)
       } else {
         window.location.href = '/dashboard'
       }
     } catch {
-      toast.error('Erreur de connexion.')
+      setErrorMsg('Impossible de contacter le serveur.')
+      toast.error('Impossible de contacter le serveur.')
       setIsPending(false)
     }
   }
@@ -69,6 +73,10 @@ export function LoginForm() {
           <p className="text-xs text-destructive">{errors.password.message}</p>
         )}
       </div>
+
+      {errorMsg && (
+        <p className="text-sm text-destructive font-medium">{errorMsg}</p>
+      )}
 
       <Button type="submit" className="w-full" disabled={isPending}>
         {isPending ? 'Connexion…' : 'Se connecter'}
