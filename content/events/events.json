@@ -1,0 +1,209 @@
+[
+  {
+    "id": "EVT-001",
+    "title": "🔥 Le concurrent attaque",
+    "description": "Un commercial concurrent vient de proposer un devis 18% moins cher à votre contact principal. Il commence à douter de votre positionnement tarifaire.",
+    "type": "threat",
+    "choices": [
+      {
+        "id": "counter_value",
+        "label": "Répondre par la valeur : organiser une démo de ROI chiffrée",
+        "effects": { "_decision_maker": 12, "_influencer": 5 },
+        "feedback": "Tu as repositionné la conversation sur la valeur business plutôt que le prix. Le client comprend maintenant pourquoi ton offre vaut plus."
+      },
+      {
+        "id": "counter_price",
+        "label": "Baisser ton tarif de 10% pour rester compétitif",
+        "effects": { "_decision_maker": 5, "_champion": -5 },
+        "feedback": "Le client a apprécié le geste mais tu as fragilisé ta valeur perçue. La baisse de prix sans contrepartie est rarement la bonne réponse."
+      },
+      {
+        "id": "ignore",
+        "label": "Ne rien faire — attendre que le client revienne",
+        "effects": { "_decision_maker": -10, "_influencer": -5 },
+        "feedback": "Le silence a été interprété comme un manque d'intérêt. Le concurrent a gagné du terrain. Dans les deals complexes, l'inaction coûte cher."
+      }
+    ]
+  },
+  {
+    "id": "EVT-002",
+    "title": "📰 Article de presse positif",
+    "description": "Un article dans Le Monde Informatique cite ton entreprise comme leader dans le domaine concerné. Ton contact principal l'a partagé en interne.",
+    "type": "opportunity",
+    "choices": [
+      {
+        "id": "amplify",
+        "label": "Envoyer l'article à tous tes contacts avec une note personnalisée",
+        "effects": { "_decision_maker": 8, "_influencer": 10, "_blocker": 5 },
+        "action_bonus": 1,
+        "feedback": "La crédibilité externe renforce ta position interne. Même le blocker a été impressionné par la notoriété de ton entreprise."
+      },
+      {
+        "id": "mention_meeting",
+        "label": "Mentionner l'article lors de ta prochaine réunion uniquement",
+        "effects": { "_decision_maker": 5, "_champion": 5 },
+        "feedback": "Tu as capitalisé sur la bonne nouvelle, mais de façon modeste. Correct mais pas optimal."
+      },
+      {
+        "id": "nothing",
+        "label": "Ne pas en parler — rester focalisé sur les sujets du deal",
+        "effects": {},
+        "feedback": "Occasion manquée. La validation externe est un levier de confiance précieux, surtout en phase de décision."
+      }
+    ]
+  },
+  {
+    "id": "EVT-003",
+    "title": "🚪 Un stakeholder clé quitte l'entreprise",
+    "description": "Ton champion interne vient d'annoncer sa démission. Il quitte dans 3 semaines. Son remplaçant n'est pas encore connu.",
+    "type": "threat",
+    "choices": [
+      {
+        "id": "secure_handover",
+        "label": "Organiser une passation formelle avec ton champion avant son départ",
+        "effects": { "_champion": 15, "_decision_maker": 8 },
+        "feedback": "La passation a été bien vécue. Ton champion a briefé son manager sur l'avancement du deal — la continuité est assurée."
+      },
+      {
+        "id": "contact_successor",
+        "label": "Contacter directement le management pour identifier le successeur",
+        "effects": { "_decision_maker": 10, "_influencer": 5 },
+        "feedback": "Tu as transformé une crise en opportunité pour rencontrer de nouveaux décideurs. Pro-actif et efficace."
+      },
+      {
+        "id": "wait_replacement",
+        "label": "Attendre que le successeur soit nommé avant de bouger",
+        "effects": { "_champion": -8, "_decision_maker": -5 },
+        "feedback": "Le vide laissé par ton champion a profité au concurrent. Ne jamais rester passif face à un changement de contact."
+      }
+    ]
+  },
+  {
+    "id": "EVT-004",
+    "title": "💰 Gel du budget annoncé",
+    "description": "Le DAF a annoncé un gel partiel des investissements IT jusqu'à la fin du trimestre. Ton deal est potentiellement concerné.",
+    "type": "threat",
+    "choices": [
+      {
+        "id": "phase_deal",
+        "label": "Proposer une première phase rapide sous le seuil de gel (< 50k€)",
+        "effects": { "_decision_maker": 15, "_daf": 12 },
+        "action_bonus": 1,
+        "feedback": "Excellent. Adapter le deal à la contrainte budget est la marque d'un commercial mature. Le DAF apprécie la flexibilité."
+      },
+      {
+        "id": "build_urgency",
+        "label": "Démontrer l'impact business du retard pour justifier une exception",
+        "effects": { "_decision_maker": 8, "_daf": 5, "_influencer": 5 },
+        "feedback": "L'argument business a été entendu. Le deal n'est pas débloqué immédiatement mais il est prioritaire pour le prochain trimestre."
+      },
+      {
+        "id": "accept_delay",
+        "label": "Accepter le report sans négocier",
+        "effects": { "_decision_maker": -5, "_daf": 2 },
+        "feedback": "Trop passif. Accepter sans proposer d'alternative laisse la main au client — et au concurrent. Toujours proposer un chemin."
+      }
+    ]
+  },
+  {
+    "id": "EVT-005",
+    "title": "🤝 Recommandation inattendue",
+    "description": "Un de tes clients actuels vient de recommander ton entreprise à ton contact sans que tu le demandes. Le contact a mentionné cette recommandation dans son dernier email.",
+    "type": "opportunity",
+    "choices": [
+      {
+        "id": "leverage_intro",
+        "label": "Organiser rapidement un call tripartite entre les deux clients",
+        "effects": { "_decision_maker": 20, "_influencer": 12, "_blocker": 10 },
+        "action_bonus": 1,
+        "feedback": "Parfait. La recommandation spontanée + le call de référence crée une dynamique de confiance difficile à contrer par un concurrent."
+      },
+      {
+        "id": "thank_and_mention",
+        "label": "Remercier le client référent et mentionner la recommandation au contact",
+        "effects": { "_decision_maker": 10, "_champion": 8 },
+        "feedback": "Correct mais tu n'as pas exploité tout le potentiel de la recommandation spontanée."
+      },
+      {
+        "id": "ignore_opportunity",
+        "label": "Continuer comme avant — ne pas surexploiter la recommandation",
+        "effects": { "_decision_maker": 3 },
+        "feedback": "Occasion partiellement manquée. La recommandation spontanée est un signal fort — il faut toujours la transformer en action concrète."
+      }
+    ]
+  },
+  {
+    "id": "EVT-006",
+    "title": "⚡ Urgence chez le client",
+    "description": "Un incident technique critique vient de frapper le client. Son équipe IT est mobilisée en urgence. Ton contact est sous pression.",
+    "type": "neutral",
+    "choices": [
+      {
+        "id": "offer_help",
+        "label": "Proposer spontanément une aide technique gratuite pour l'urgence",
+        "effects": { "_decision_maker": 18, "_champion": 15, "_blocker": 12 },
+        "feedback": "Action inattendue et très appréciée. Aider sans facturer dans un moment critique crée une dette émotionnelle positive durable."
+      },
+      {
+        "id": "send_empathy",
+        "label": "Envoyer un message de soutien et reporter les réunions prévues",
+        "effects": { "_decision_maker": 8, "_champion": 8 },
+        "feedback": "Geste professionnel et empathique. Respecter le timing du client est essentiel pour la relation long terme."
+      },
+      {
+        "id": "push_meeting",
+        "label": "Maintenir les réunions prévues — le deal ne doit pas s'arrêter",
+        "effects": { "_decision_maker": -12, "_champion": -8, "_blocker": -5 },
+        "feedback": "Très mauvais timing. Insister sur le deal pendant une crise est perçu comme du manque d'empathie. Erreur irréparable dans certains cas."
+      }
+    ]
+  },
+  {
+    "id": "EVT-007",
+    "title": "🏆 Remise de prix sectorielle",
+    "description": "Ton entreprise vient de recevoir un prix dans le domaine du deal en cours. Tu pourrais en faire usage.",
+    "type": "opportunity",
+    "choices": [
+      {
+        "id": "invite_ceremony",
+        "label": "Inviter le décideur à la cérémonie de remise du prix",
+        "effects": { "_decision_maker": 15, "_influencer": 10 },
+        "action_bonus": 1,
+        "feedback": "L'invitation à un événement externe est une façon élégante de renforcer la relation hors du contexte commercial."
+      },
+      {
+        "id": "share_news",
+        "label": "Partager la nouvelle avec tous tes contacts par email personnalisé",
+        "effects": { "_decision_maker": 8, "_influencer": 8, "_blocker": 5 },
+        "feedback": "Bonne utilisation de la preuve sociale externe. La validation par un tiers renforce la crédibilité."
+      }
+    ]
+  },
+  {
+    "id": "EVT-008",
+    "title": "📊 Restructuration interne chez le client",
+    "description": "Une réorganisation est annoncée chez le client. Certains décideurs voient leur périmètre changer. Le projet pourrait être réattribué.",
+    "type": "neutral",
+    "choices": [
+      {
+        "id": "map_new_orga",
+        "label": "Demander une réunion de recadrage pour comprendre la nouvelle organisation",
+        "effects": { "_decision_maker": 12, "_champion": 8, "_influencer": 10 },
+        "action_bonus": 1,
+        "feedback": "Exemplaire. Les reorganisations créent des incertitudes — montrer sa réactivité et sa curiosité rassure tous les acteurs."
+      },
+      {
+        "id": "stick_to_contacts",
+        "label": "Continuer avec tes contacts habituels et attendre la stabilisation",
+        "effects": { "_champion": -5, "_decision_maker": -8 },
+        "feedback": "Risqué. Si tes contacts perdent leur périmètre, tu perds ton ancrage. Toujours cartographier rapidement la nouvelle organisation."
+      },
+      {
+        "id": "contact_new_decision_maker",
+        "label": "Identifier et contacter directement le nouveau décideur potentiel",
+        "effects": { "_decision_maker": 15, "_influencer": 5, "_champion": -3 },
+        "feedback": "Bonne initiative sur le fond, mais tu as légèrement froissé ton champion existant en le contournant. Toujours inclure tes alliés dans les nouvelles approches."
+      }
+    ]
+  }
+]

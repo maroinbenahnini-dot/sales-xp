@@ -1,0 +1,203 @@
+{
+  "id": "RFP-TMA-1",
+  "title": "TMA & Run Applicatif — LogiGroup",
+  "theme": "tma",
+  "difficulty": "medium",
+  "deadline_days": 14,
+  "deal_size": "540k€/an",
+  "client": "LogiGroup SA",
+  "context": "LogiGroup SA, groupe de logistique avec 120 agences et 6 000 utilisateurs, souhaite externaliser la tierce maintenance applicative et le run de son SI composé de 22 applications métier (WMS, TMS, CRM, ERP SAP). Le contrat est reconductible 3 ans. L'enjeu : proposer une équipe stables, des SLA exigeants et un modèle de gouvernance qui sécurise la continuité de service tout en permettant l'évolution du SI.",
+
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "section": "Organisation et gouvernance",
+      "description": "Modèle de gouvernance TMA : RACI, comités, reporting mensuel, plan de réversibilité. Engagement d'un Chef de Projet dédié senior.",
+      "weight": 20
+    },
+    {
+      "id": "REQ-2",
+      "section": "SLA et niveaux de service",
+      "description": "SLA par criticité d'application : P1 (résolution < 4h), P2 (< 8h), P3 (< 48h). Disponibilité 99.5% sur les applications critiques. Pénalités contractuelles exigées.",
+      "weight": 25
+    },
+    {
+      "id": "REQ-3",
+      "section": "Compétences techniques",
+      "description": "Couverture SAP (MM, SD, FI), Java/J2EE, WMS Manhattan, intégrations EDI. Au minimum 2 profils SAP certifiés dans l'équipe proposée.",
+      "weight": 25
+    },
+    {
+      "id": "REQ-4",
+      "section": "Plan de transition et knowledge transfer",
+      "description": "Plan de transition de 3 mois : audit applicatif, cartographie, prise en charge progressive. Documentation complète livrée à J+90.",
+      "weight": 15
+    },
+    {
+      "id": "REQ-5",
+      "section": "Innovation et amélioration continue",
+      "description": "Proposition d'un plan d'amélioration continue : réduction des incidents récurrents, automatisation des tâches répétitives, indicateurs de progrès trimestriels.",
+      "weight": 10
+    },
+    {
+      "id": "REQ-6",
+      "section": "Modèle économique",
+      "description": "Tarification transparente : prix par UO (unité d'œuvre), modèle forfait + régie, mécanisme de bonus/malus sur SLA.",
+      "weight": 5
+    }
+  ],
+
+  "team_pool": [
+    {
+      "id": "MEMBER-1",
+      "name": "Sandrine Morel",
+      "role": "Chef de Projet TMA Senior",
+      "skills": ["project-management", "governance", "reporting", "sla-management", "stakeholder"],
+      "availability": 1.0,
+      "cost_per_day": 820
+    },
+    {
+      "id": "MEMBER-2",
+      "name": "Karim Nasri",
+      "role": "Consultant SAP MM/SD Senior",
+      "skills": ["sap", "sap-mm", "sap-sd", "erp", "functional-analysis"],
+      "availability": 0.9,
+      "cost_per_day": 950
+    },
+    {
+      "id": "MEMBER-3",
+      "name": "Julie Marchand",
+      "role": "Développeuse Java Senior",
+      "skills": ["java", "j2ee", "api", "integration", "debugging"],
+      "availability": 1.0,
+      "cost_per_day": 780
+    },
+    {
+      "id": "MEMBER-4",
+      "name": "Rachid Benali",
+      "role": "Expert WMS Manhattan",
+      "skills": ["wms", "manhattan", "logistics", "warehouse", "integration"],
+      "availability": 0.8,
+      "cost_per_day": 880
+    },
+    {
+      "id": "MEMBER-5",
+      "name": "Laure Tissot",
+      "role": "Consultante SAP FI/CO",
+      "skills": ["sap", "sap-fi", "sap-co", "erp", "reporting"],
+      "availability": 1.0,
+      "cost_per_day": 920
+    },
+    {
+      "id": "MEMBER-6",
+      "name": "Antoine Gros",
+      "role": "Technicien Support N2",
+      "skills": ["support", "debugging", "sql", "monitoring", "documentation"],
+      "availability": 1.0,
+      "cost_per_day": 580
+    },
+    {
+      "id": "MEMBER-7",
+      "name": "Nadia Kowalski",
+      "role": "Ingénieure Intégrations EDI",
+      "skills": ["edi", "integration", "api", "logistics", "xml"],
+      "availability": 0.7,
+      "cost_per_day": 760
+    },
+    {
+      "id": "MEMBER-8",
+      "name": "Fabrice Lebrun",
+      "role": "Expert DevOps & Automatisation",
+      "skills": ["devops", "automation", "monitoring", "ci-cd", "documentation"],
+      "availability": 0.6,
+      "cost_per_day": 810
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": "TASK-1",
+      "title": "Gouvernance TMA : RACI, comités, reporting mensuel",
+      "section": "Organisation et gouvernance",
+      "required_skills": ["project-management", "governance"],
+      "duration_days": 3,
+      "quality_impact": 20
+    },
+    {
+      "id": "TASK-2",
+      "title": "Définition des SLA et mécanisme de pénalités",
+      "section": "SLA et niveaux de service",
+      "required_skills": ["sla-management", "reporting"],
+      "duration_days": 2,
+      "quality_impact": 25
+    },
+    {
+      "id": "TASK-3",
+      "title": "Couverture SAP MM/SD — maintenance et évolutions",
+      "section": "Compétences techniques",
+      "required_skills": ["sap", "sap-mm"],
+      "duration_days": 10,
+      "quality_impact": 20
+    },
+    {
+      "id": "TASK-4",
+      "title": "Maintenance applications Java et intégrations",
+      "section": "Compétences techniques",
+      "required_skills": ["java", "integration"],
+      "duration_days": 8,
+      "quality_impact": 15
+    },
+    {
+      "id": "TASK-5",
+      "title": "Support et maintenance WMS Manhattan",
+      "section": "Compétences techniques",
+      "required_skills": ["wms", "logistics"],
+      "duration_days": 8,
+      "quality_impact": 15
+    },
+    {
+      "id": "TASK-6",
+      "title": "Plan de transition et audit applicatif (J0 à J+90)",
+      "section": "Plan de transition et knowledge transfer",
+      "required_skills": ["project-management", "documentation"],
+      "duration_days": 5,
+      "quality_impact": 15
+    },
+    {
+      "id": "TASK-7",
+      "title": "Plan d'amélioration continue et automatisation",
+      "section": "Innovation et amélioration continue",
+      "required_skills": ["automation", "monitoring"],
+      "duration_days": 3,
+      "quality_impact": 10
+    },
+    {
+      "id": "TASK-8",
+      "title": "Maintenance intégrations EDI et flux logistiques",
+      "section": "Compétences techniques",
+      "required_skills": ["edi", "integration"],
+      "duration_days": 5,
+      "quality_impact": 10
+    }
+  ],
+
+  "pricing_strategy": {
+    "market_rate": 750,
+    "aggressive_threshold": 600,
+    "premium_threshold": 920,
+    "competitor_estimate": 810
+  },
+
+  "endings": {
+    "won": {
+      "condition": "score >= 62",
+      "xp": 700,
+      "badges": ["rfp_winner", "five_wins"]
+    },
+    "lost": {
+      "condition": "score < 62",
+      "xp": 180,
+      "badges": ["first_rfp"]
+    }
+  }
+}

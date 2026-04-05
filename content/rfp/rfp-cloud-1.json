@@ -1,0 +1,203 @@
+{
+  "id": "RFP-CLOUD-1",
+  "title": "Migration Cloud AWS — RetailGroup",
+  "theme": "cloud",
+  "difficulty": "medium",
+  "deadline_days": 21,
+  "deal_size": "800k€",
+  "client": "RetailGroup SA",
+  "context": "RetailGroup SA, leader de la grande distribution avec 280 magasins, souhaite migrer son infrastructure e-commerce on-premise vers AWS. L'appel d'offre porte sur la migration de 12 applications critiques, la mise en place d'une architecture cloud-native et l'accompagnement des équipes IT internes. Deadline de réponse : 21 jours.",
+
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "section": "Architecture technique",
+      "description": "Proposition d'une architecture AWS cible (VPC, EKS, RDS Aurora, CloudFront) avec schéma détaillé et justification des choix techniques.",
+      "weight": 25
+    },
+    {
+      "id": "REQ-2",
+      "section": "Méthodologie de migration",
+      "description": "Approche de migration en 3 phases (Discovery, Pilot, Scale) avec plan de réversibilité et stratégie de tests de charge.",
+      "weight": 20
+    },
+    {
+      "id": "REQ-3",
+      "section": "Sécurité & conformité",
+      "description": "Conformité RGPD, chiffrement des données au repos et en transit, IAM, SOC2 Type II. Audit de sécurité inclus.",
+      "weight": 20
+    },
+    {
+      "id": "REQ-4",
+      "section": "Composition de l'équipe",
+      "description": "Profils des consultants mobilisés : Cloud Architect, DevOps Engineers, Security Expert, Project Manager. Certifications AWS requises.",
+      "weight": 15
+    },
+    {
+      "id": "REQ-5",
+      "section": "FinOps & optimisation des coûts",
+      "description": "Estimation des coûts AWS mensuels, stratégie d'optimisation (Reserved Instances, Savings Plans), reporting FinOps mensuel.",
+      "weight": 10
+    },
+    {
+      "id": "REQ-6",
+      "section": "SLA & support",
+      "description": "Engagement de disponibilité 99.9%, astreinte 24/7 durant la migration, support Level 2 inclus pendant 3 mois.",
+      "weight": 10
+    }
+  ],
+
+  "team_pool": [
+    {
+      "id": "MEMBER-1",
+      "name": "Julien Moreau",
+      "role": "Cloud Architect",
+      "skills": ["aws", "architecture", "kubernetes", "terraform"],
+      "availability": 1.0,
+      "cost_per_day": 950
+    },
+    {
+      "id": "MEMBER-2",
+      "name": "Fatima Zahra Idrissi",
+      "role": "DevOps Lead",
+      "skills": ["aws", "kubernetes", "ci-cd", "terraform", "monitoring"],
+      "availability": 0.8,
+      "cost_per_day": 850
+    },
+    {
+      "id": "MEMBER-3",
+      "name": "Thomas Blanc",
+      "role": "Security Engineer",
+      "skills": ["security", "iam", "compliance", "rgpd", "soc2"],
+      "availability": 1.0,
+      "cost_per_day": 900
+    },
+    {
+      "id": "MEMBER-4",
+      "name": "Claire Dupont",
+      "role": "Project Manager",
+      "skills": ["project-management", "planning", "reporting", "stakeholder"],
+      "availability": 1.0,
+      "cost_per_day": 750
+    },
+    {
+      "id": "MEMBER-5",
+      "name": "Romain Chevalier",
+      "role": "DevOps Engineer",
+      "skills": ["aws", "ci-cd", "docker", "monitoring"],
+      "availability": 0.6,
+      "cost_per_day": 780
+    },
+    {
+      "id": "MEMBER-6",
+      "name": "Amira Ndiaye",
+      "role": "FinOps Specialist",
+      "skills": ["finops", "aws", "cost-optimization", "reporting"],
+      "availability": 0.5,
+      "cost_per_day": 820
+    },
+    {
+      "id": "MEMBER-7",
+      "name": "Pierre Garnier",
+      "role": "Solution Architect",
+      "skills": ["architecture", "aws", "microservices", "api"],
+      "availability": 0.9,
+      "cost_per_day": 920
+    },
+    {
+      "id": "MEMBER-8",
+      "name": "Léa Fontaine",
+      "role": "Data Engineer",
+      "skills": ["data", "aws", "rds", "migration"],
+      "availability": 0.7,
+      "cost_per_day": 840
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": "TASK-1",
+      "title": "Schéma architecture AWS cible",
+      "section": "Architecture technique",
+      "required_skills": ["architecture", "aws"],
+      "duration_days": 5,
+      "quality_impact": 25
+    },
+    {
+      "id": "TASK-2",
+      "title": "Plan de migration 3 phases",
+      "section": "Méthodologie de migration",
+      "required_skills": ["project-management", "aws"],
+      "duration_days": 4,
+      "quality_impact": 20
+    },
+    {
+      "id": "TASK-3",
+      "title": "Audit sécurité & conformité RGPD",
+      "section": "Sécurité & conformité",
+      "required_skills": ["security", "compliance"],
+      "duration_days": 3,
+      "quality_impact": 20
+    },
+    {
+      "id": "TASK-4",
+      "title": "Setup infrastructure IaC (Terraform)",
+      "section": "Architecture technique",
+      "required_skills": ["terraform", "aws"],
+      "duration_days": 4,
+      "quality_impact": 15
+    },
+    {
+      "id": "TASK-5",
+      "title": "Pipeline CI/CD et monitoring",
+      "section": "Méthodologie de migration",
+      "required_skills": ["ci-cd", "monitoring"],
+      "duration_days": 3,
+      "quality_impact": 10
+    },
+    {
+      "id": "TASK-6",
+      "title": "Estimation FinOps et optimisation coûts",
+      "section": "FinOps & optimisation des coûts",
+      "required_skills": ["finops", "cost-optimization"],
+      "duration_days": 2,
+      "quality_impact": 10
+    },
+    {
+      "id": "TASK-7",
+      "title": "Migration base de données RDS Aurora",
+      "section": "Méthodologie de migration",
+      "required_skills": ["rds", "migration"],
+      "duration_days": 3,
+      "quality_impact": 15
+    },
+    {
+      "id": "TASK-8",
+      "title": "Rédaction SLA et plan de support",
+      "section": "SLA & support",
+      "required_skills": ["project-management", "reporting"],
+      "duration_days": 2,
+      "quality_impact": 10
+    }
+  ],
+
+  "pricing_strategy": {
+    "market_rate": 850,
+    "aggressive_threshold": 700,
+    "premium_threshold": 1050,
+    "competitor_estimate": 920
+  },
+
+  "endings": {
+    "won": {
+      "condition": "score >= 65",
+      "xp": 800,
+      "badges": ["rfp_winner", "cloud_expert"]
+    },
+    "lost": {
+      "condition": "score < 65",
+      "xp": 200,
+      "badges": []
+    }
+  }
+}

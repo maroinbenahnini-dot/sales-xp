@@ -1,0 +1,262 @@
+{
+  "id": "ACT1-S1",
+  "title": "Premier Contact",
+  "act": 1,
+  "theme": "apps",
+  "difficulty": "easy",
+  "duration_weeks": 8,
+  "actions_per_week": 5,
+  "context": {
+    "company": "FinTech SA",
+    "industry": "Banque & Assurance",
+    "deal_size": "150k€",
+    "brief": "FinTech SA est une fintech en forte croissance qui souffre d'une application mobile vieillissante. Leur DSI, Marc Dubois, cherche un partenaire de confiance pour refondre l'app. Ils ont été déçus par leur prestataire actuel. C'est ton moment."
+  },
+  "stakeholders": [
+    {
+      "id": "marc_d",
+      "name": "Marc Dubois",
+      "role": "DSI",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Réduire la dette technique et moderniser l'app mobile",
+      "hidden_fear": "A peur de perdre le contrôle du SI si le prestataire prend trop de place",
+      "preferred_channel": "meeting",
+      "initial_relation": 10
+    },
+    {
+      "id": "sophie_l",
+      "name": "Sophie Laurent",
+      "role": "DG Adjointe",
+      "influence": 4,
+      "type": "influencer",
+      "visible_motivation": "Veut montrer des résultats concrets à la direction",
+      "hidden_fear": "Craint que le projet dépasse le budget initial",
+      "preferred_channel": "lunch",
+      "initial_relation": 20
+    },
+    {
+      "id": "amina_b",
+      "name": "Amina Benali",
+      "role": "Chef de Projet IT",
+      "influence": 3,
+      "type": "influencer",
+      "visible_motivation": "Frustrée par le prestataire actuel, veut que ça change",
+      "hidden_fear": "Peur d'être court-circuitée dans les décisions techniques",
+      "preferred_channel": "email",
+      "initial_relation": 35
+    },
+    {
+      "id": "kevin_t",
+      "name": "Kevin Tran",
+      "role": "RSSI",
+      "influence": 3,
+      "type": "blocker",
+      "visible_motivation": "Sécuriser le SI et les données clients",
+      "hidden_fear": "Méfiant envers les prestataires externes qui accèdent au code",
+      "preferred_channel": "meeting",
+      "initial_relation": 5
+    },
+    {
+      "id": "patrick_r",
+      "name": "Patrick Renard",
+      "role": "DAF",
+      "influence": 4,
+      "type": "influencer",
+      "visible_motivation": "Optimiser les coûts IT sans sacrifier la qualité",
+      "hidden_fear": "A été brûlé par des projets qui ont dérapé financièrement",
+      "preferred_channel": "email",
+      "initial_relation": 15
+    }
+  ],
+  "actions": {
+    "email": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "email_formal_intro",
+          "label": "Email formel de présentation (références secteur banque)",
+          "target": "marc_d",
+          "effects": { "marc_d": 8, "amina_b": 3 },
+          "feedback": {
+            "result": "Marc lit l'email et te met en liste de fournisseurs potentiels.",
+            "explanation": "Marc est process-driven. Un email formel avec des références sectorielles pertinentes démontre que tu fais tes devoirs. C'est exactement ce qu'il filtre en premier contact.",
+            "optimal": "Bon choix pour un premier contact avec un DSI froid. Toujours inclure des références du secteur — ça valide ta légitimité sans forcer la relation.",
+            "skill": "first_contact"
+          }
+        },
+        {
+          "id": "email_casual",
+          "label": "Email décontracté avec humour pour se démarquer",
+          "target": "marc_d",
+          "effects": { "marc_d": -8 },
+          "feedback": {
+            "result": "Marc ne répond pas. Il te classe comme 'pas sérieux'.",
+            "explanation": "La familiarité forcée avec un DSI que tu ne connais pas encore est perçue comme un manque de professionnalisme. Marc reçoit des dizaines d'emails de commerciaux — le ton décontracté sans légitimité préalable est éliminatoire.",
+            "optimal": "Reserve l'humour pour quand la relation est installée (jauge > 50). En cold contact, la crédibilité prime sur la sympathie.",
+            "skill": "stakeholder_reading"
+          }
+        },
+        {
+          "id": "email_roi",
+          "label": "Email avec étude de cas ROI et chiffres concrets",
+          "target": "patrick_r",
+          "effects": { "patrick_r": 12, "marc_d": 4 },
+          "feedback": {
+            "result": "Patrick transmet ton email à Marc avec la note 'À regarder'.",
+            "explanation": "Patrick est DAF — les chiffres sont son langage. En le ciblant lui avec un email ROI, tu crées un ambassadeur inattendu auprès du DSI. Les décisions complexes se gagnent souvent en travaillant les alliés périphériques.",
+            "optimal": "Excellent move. Contourner le DSI froid en passant par le DAF sensible au ROI est une tactique avancée. Continue à nourrir Patrick — il peut débloquer Marc.",
+            "skill": "multi_stakeholder"
+          }
+        }
+      ]
+    },
+    "meeting_request": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "meeting_demo",
+          "label": "Proposer une démo de 30 min (sans engagement)",
+          "target": "marc_d",
+          "effects": { "marc_d": 5 },
+          "unlock_condition": { "marc_d": 20 },
+          "feedback": {
+            "result": "Marc accepte un créneau en fin de semaine.",
+            "explanation": "30 minutes sans engagement, c'est le format idéal pour un DSI occupé. Tu baisses la barrière d'entrée — il n'a rien à perdre. La contrainte de temps crée aussi un sentiment d'efficacité qu'il apprécie.",
+            "optimal": "Bon timing. Attendre que la relation atteigne 20+ avant de proposer une réunion est la bonne approche — sinon tu risques un refus qui refroidit la relation.",
+            "skill": "timing"
+          }
+        },
+        {
+          "id": "meeting_too_early",
+          "label": "Proposer une réunion de découverte d'1h",
+          "target": "marc_d",
+          "effects": { "marc_d": -5 },
+          "unlock_condition": null,
+          "feedback": {
+            "result": "Marc décline poliment. Pas de retour de sa part pendant 2 semaines.",
+            "explanation": "1 heure de réunion avec quelqu'un qui ne te connait pas encore, c'est trop demander. Tu consommes son capital attention sans lui donner de valeur préalable. Le silence qui suit est coûteux.",
+            "optimal": "Commence par une démo de 30 min ou un échange de 15 min. Réserve les longues réunions découverte pour quand tu as déjà établi une crédibilité minimale.",
+            "skill": "timing"
+          }
+        }
+      ]
+    },
+    "lunch": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "lunch_amina",
+          "label": "Inviter Amina pour un déjeuner informel",
+          "target": "amina_b",
+          "effects": { "amina_b": 25, "marc_d": 5 },
+          "unlock_condition": { "amina_b": 30 },
+          "feedback": {
+            "result": "Amina accepte avec enthousiasme. Elle te confie ses vraies frustrations avec le prestataire actuel — et ses aspirations.",
+            "explanation": "Amina est ton champion potentiel. Elle est frustrée et cherche un allié. Le déjeuner informel libère la parole — tu vas découvrir des informations que tu ne trouveras pas en réunion officielle : les vrais problèmes, les tensions internes, ce qui fera vraiment la décision.",
+            "optimal": "Excellente décision. Investir 2 actions sur Amina maintenant te donnera un relais interne précieux. Note tout ce qu'elle te dit — ses insights vont transformer ta proposition.",
+            "skill": "champion_building"
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "proposal_full",
+          "label": "Envoyer une proposition complète et détaillée",
+          "target": "marc_d",
+          "effects": { "marc_d": -5, "patrick_r": 3 },
+          "unlock_condition": null,
+          "feedback": {
+            "result": "Marc trouve la proposition trop générique. Elle reste sans réponse.",
+            "explanation": "Envoyer une proposition sans avoir fait de découverte approfondie, c'est proposer une solution à un problème que tu ne connais pas encore vraiment. Marc le ressent — une proposition générique dit 'je veux te vendre quelque chose', pas 'j'ai compris ton problème'.",
+            "optimal": "Une proposition se prépare APRÈS une réunion de découverte. Utilise d'abord meeting_request et lunch pour comprendre les enjeux réels, puis personnalise ta proposition à 100%.",
+            "skill": "discovery"
+          }
+        },
+        {
+          "id": "proposal_targeted",
+          "label": "Envoyer une note de cadrage ciblée (3 pages max)",
+          "target": "marc_d",
+          "effects": { "marc_d": 15, "amina_b": 8, "patrick_r": 5 },
+          "unlock_condition": { "amina_b": 60, "marc_d": 40 },
+          "feedback": {
+            "result": "Marc transmet la note à son équipe. Amina la commente positivement en interne.",
+            "explanation": "Après tes échanges avec Amina et Marc, tu as les clés pour rédiger quelque chose de précis. Une note courte et ciblée montre que tu as écouté — c'est infiniment plus puissant qu'un long document générique. La brièveté signale aussi le respect de leur temps.",
+            "optimal": "Parfait timing. C'est la bonne séquence : écouter → comprendre → proposer. Ta note de cadrage servira de base pour la vraie proposition.",
+            "skill": "discovery"
+          }
+        }
+      ]
+    },
+    "reference_visit": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "visit_banking_reference",
+          "label": "Organiser une visite chez un client bancaire de référence",
+          "target": "marc_d",
+          "effects": { "marc_d": 20, "kevin_t": 12, "patrick_r": 10 },
+          "unlock_condition": { "marc_d": 50 },
+          "feedback": {
+            "result": "La visite est un succès. Marc parle à ton client de référence en privé — et repart convaincu de ta capacité d'exécution.",
+            "explanation": "Rien ne vaut la preuve sociale dans le même secteur. Marc entend un DSI comme lui valider ta méthode de travail, ta fiabilité et la qualité de tes équipes. Kevin rassure sa part sécurité en direct. Patrick entend parler des vrais coûts. Trois oiseaux d'une pierre.",
+            "optimal": "Investissement de 2 actions bien rentabilisé. Les visites de référence sectorielle sont souvent l'élément déclencheur dans les deals complexes. À garder pour le moment où Marc est presque convaincu.",
+            "skill": "credibility"
+          }
+        }
+      ]
+    },
+    "event_response": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "event_respond_fast",
+          "label": "Répondre en moins de 2h avec une solution concrète",
+          "target": "all",
+          "effects": { "marc_d": 10, "amina_b": 8 },
+          "feedback": {
+            "result": "Marc note ta réactivité. 'Ce prestataire est sérieux.'",
+            "explanation": "Dans les moments de crise ou d'urgence, la rapidité de réponse est un signal fort de fiabilité. C'est le moment où tu passes de 'vendeur' à 'partenaire potentiel'.",
+            "optimal": "Toujours répondre vite aux événements. Même si tu n'as pas la solution complète, accuser réception et donner une échéance vaut mieux que le silence.",
+            "skill": "responsiveness"
+          }
+        }
+      ]
+    }
+  },
+  "endings": {
+    "won": {
+      "condition": "score >= 70",
+      "narrative": "Marc t'appelle un mardi matin. 'On a décidé de partir avec vous. Votre approche nous a convaincus — et Amina ne tarit pas d'éloges.' Tu décroches ton premier deal apps. 150k€. Le début de quelque chose de grand.",
+      "xp": 200,
+      "badges": ["first_win", "deal_closer"],
+      "carry_over": {
+        "marc_d_relation": "positive",
+        "amina_b_champion": "true",
+        "fintech_reputation": "strong"
+      }
+    },
+    "lost": {
+      "condition": "score < 40",
+      "narrative": "FinTech SA choisit un concurrent. Marc ne prend plus tes appels. Tu as manqué les bons signaux — trop tôt sur la proposition, trop lent sur les relations.",
+      "xp": 50,
+      "badges": [],
+      "carry_over": {
+        "fintech_reputation": "damaged"
+      }
+    },
+    "pending": {
+      "condition": "score >= 40",
+      "narrative": "FinTech SA est en réflexion. Marc veut encore un échange avant de décider. Tu es en bonne position mais pas encore certain. Il faudra être patient.",
+      "xp": 80,
+      "badges": [],
+      "carry_over": {
+        "marc_d_relation": "neutral",
+        "fintech_reputation": "neutral"
+      }
+    }
+  }
+}

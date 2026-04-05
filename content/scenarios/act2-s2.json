@@ -1,0 +1,295 @@
+{
+  "id": "ACT2-S2",
+  "title": "Zéro Confiance",
+  "act": 2,
+  "theme": "cyber",
+  "difficulty": "hard",
+  "duration_weeks": 8,
+  "actions_per_week": 4,
+  "context": {
+    "company": "HealthData SA",
+    "industry": "Santé & Assurance",
+    "deal_size": "280k€",
+    "brief": "HealthData SA gère les données de santé de 2 millions de patients. Suite à un incident de sécurité chez un concurrent direct, leur DG a donné 90 jours à la DSI pour livrer un audit complet et une nouvelle politique de sécurité. Le budget est débloqué, mais l'urgence crée des tensions. Le RSSI est paranoïaque et méfiant envers tous les prestataires. Tu dois prouver ta crédibilité technique tout en manœuvrant dans un environnement sous pression réglementaire RGPD et HDS."
+  },
+  "stakeholders": [
+    {
+      "id": "marc_f",
+      "name": "Marc Fontaine",
+      "role": "RSSI",
+      "influence": 5,
+      "type": "blocker",
+      "visible_motivation": "Sécuriser absolument le SI et éviter tout incident après celui du concurrent",
+      "hidden_fear": "Peur d'être tenu responsable personnellement en cas de fuite de données patients",
+      "preferred_channel": "meeting",
+      "initial_relation": 5
+    },
+    {
+      "id": "isabelle_r",
+      "name": "Isabelle Renaud",
+      "role": "DG",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Rassurer les régulateurs, les patients et le conseil d'administration",
+      "hidden_fear": "Une sanction RGPD ou HDS pourrait menacer l'existence de la société",
+      "preferred_channel": "event_response",
+      "initial_relation": 25
+    },
+    {
+      "id": "adrien_l",
+      "name": "Adrien Leclercq",
+      "role": "DSI",
+      "influence": 3,
+      "type": "influencer",
+      "visible_motivation": "Livrer l'audit dans les délais sans perturber la production",
+      "hidden_fear": "Peur que l'audit révèle des failles qu'il aurait dû corriger depuis longtemps",
+      "preferred_channel": "meeting",
+      "initial_relation": 30
+    },
+    {
+      "id": "sophie_w",
+      "name": "Sophie Weil",
+      "role": "DPO (Délégué Protection des Données)",
+      "influence": 3,
+      "type": "champion",
+      "visible_motivation": "Mettre en conformité RGPD / HDS le SI de HealthData",
+      "hidden_fear": "Manque de moyens pour imposer ses recommandations aux équipes IT",
+      "preferred_channel": "email",
+      "initial_relation": 40
+    },
+    {
+      "id": "hugo_m",
+      "name": "Hugo Marin",
+      "role": "Directeur Médical",
+      "influence": 2,
+      "type": "influencer",
+      "visible_motivation": "Que les médecins continuent d'accéder aux données sans friction",
+      "hidden_fear": "Que les mesures de sécurité ralentissent les soins et énervent ses équipes",
+      "preferred_channel": "lunch",
+      "initial_relation": 20
+    },
+    {
+      "id": "clara_p",
+      "name": "Clara Petit",
+      "role": "Responsable Conformité",
+      "influence": 2,
+      "type": "influencer",
+      "visible_motivation": "Documenter et certifier les contrôles pour l'ANSSI et la CNIL",
+      "hidden_fear": "Peur de ne pas avoir tous les éléments de preuve en cas de contrôle",
+      "preferred_channel": "email",
+      "initial_relation": 35
+    }
+  ],
+  "actions": {
+    "email": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "email_pentest_scope",
+          "label": "Envoyer une proposition de scope de pentest et d'audit ISO 27001 détaillée",
+          "effects": { "marc_f": 15, "adrien_l": 10, "clara_p": 12 },
+          "feedback": {
+            "result": "Marc Fontaine a annoté ton document et t'a renvoyé 12 questions techniques. Il commence à te prendre au sérieux.",
+            "explanation": "Un RSSI paranoïaque teste d'abord la crédibilité technique avant la crédibilité commerciale. Un scope de pentest précis (périmètre, méthodologie OWASP/PTES, livrables) montre que tu connais ton sujet.",
+            "optimal": "Inclure les certifications de tes consultants (OSCP, CISSP, ISO 27001 Lead Auditor) dès le premier email — cela rassure immédiatement.",
+            "skill": "technical_credibility"
+          }
+        },
+        {
+          "id": "email_rgpd",
+          "label": "Envoyer une note sur les obligations HDS et les sanctions CNIL récentes",
+          "effects": { "sophie_w": 18, "isabelle_r": 12, "clara_p": 10 },
+          "feedback": {
+            "result": "Sophie Weil a utilisé ta note dans sa présentation au CODIR — tu es maintenant cité comme référence.",
+            "explanation": "La DPO cherche des arguments pour convaincre la direction d'investir. En lui fournissant des preuves de risque réglementaire, tu lui donnes de l'autorité et tu crées un allié influent.",
+            "optimal": "Cite des sanctions CNIL récentes dans le secteur santé avec les montants — rien de plus parlant pour une DG qu'un chiffre de sanction concret.",
+            "skill": "regulatory_framing"
+          }
+        },
+        {
+          "id": "email_commercial",
+          "label": "Envoyer un email commercial avec vos certifications et références cyber",
+          "effects": { "marc_f": 3, "adrien_l": 3 },
+          "feedback": {
+            "result": "Réponse automatique de Marc Fontaine : 'Bien reçu, nous examinerons votre dossier.'",
+            "explanation": "Dans un contexte post-incident, les emails commerciaux sont perçus comme du bruit. Le RSSI est en mode crise — seul un contenu qui l'aide à résoudre son problème immédiat retient son attention.",
+            "optimal": "Remplace le pitch commercial par une analyse des vecteurs d'attaque courants dans le secteur santé — c'est ce qui intéresse vraiment un RSSI en ce moment.",
+            "skill": "personalization"
+          }
+        }
+      ]
+    },
+    "meeting_request": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "meeting_rssi_technical",
+          "label": "Atelier technique avec Marc : revue de l'architecture et identification des gaps",
+          "effects": { "marc_f": 25, "adrien_l": 12, "clara_p": 8 },
+          "feedback": {
+            "result": "Marc Fontaine a passé 3h avec ton architecte sécurité. En fin de réunion, il t'a dit : 'Vous êtes les premiers à avoir trouvé le vecteur d'attaque que j'avais identifié moi-même.'",
+            "explanation": "Valider les intuitions du RSSI est la façon la plus rapide de gagner sa confiance. Il sait où sont les failles — si tu les trouves aussi, tu prouves que tu penses comme lui.",
+            "optimal": "Prépare un RSSI Briefing Document avec des hypothèses de menaces ciblées sur le secteur santé (ransomware, data exfiltration). Montre que tu as fait tes recherches.",
+            "skill": "technical_credibility"
+          }
+        },
+        {
+          "id": "meeting_dg_risk",
+          "label": "Présentation des risques résiduels à Isabelle Renaud et son conseil",
+          "effects": { "isabelle_r": 22, "marc_f": 8, "sophie_w": 10 },
+          "feedback": {
+            "result": "Isabelle Renaud a ordonné l'accélération du projet. 'Je veux que vous commenciez la semaine prochaine.'",
+            "explanation": "Une DG sous pression réglementaire veut voir les risques quantifiés et les actions concrètes pour les réduire. Une matrice risques/impacts bien présentée la fait passer de spectateur à sponsor actif.",
+            "optimal": "Structure la présentation risques en : probabilité × impact × coût de correction vs coût de l'incident. La DG prend des décisions business, pas techniques.",
+            "skill": "executive_engagement"
+          }
+        },
+        {
+          "id": "meeting_dpo",
+          "label": "Workshop co-construction PSSI (Politique de Sécurité du SI) avec Sophie et Clara",
+          "effects": { "sophie_w": 20, "clara_p": 18, "marc_f": 10 },
+          "feedback": {
+            "result": "Sophie et Clara ont validé le cadre de la PSSI. Elles vont défendre ton approche auprès du RSSI.",
+            "explanation": "En impliquant la DPO et la responsable conformité dans la co-construction, tu crées deux championnes qui te légitiment aux yeux du RSSI. C'est le meilleur contournement d'un bloqueur paranoïaque.",
+            "optimal": "La PSSI co-construite appartient à l'organisation, pas au prestataire. Ce transfert de propriété est essentiel pour l'adoption.",
+            "skill": "co_construction"
+          }
+        }
+      ]
+    },
+    "lunch": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "lunch_hugo",
+          "label": "Déjeuner avec Hugo Marin pour comprendre les contraintes médicales",
+          "effects": { "hugo_m": 22, "adrien_l": 8, "marc_f": 5 },
+          "feedback": {
+            "result": "Hugo Marin a accepté de témoigner au CODIR que les mesures de sécurité sont compatibles avec les soins.",
+            "explanation": "Le directeur médical est le contre-poids naturel d'un RSSI trop restrictif. En le convainquant que sécurité et fluidité médicale sont compatibles, tu désamorces une future objection.",
+            "optimal": "Propose un mode 'break glass' pour les urgences médicales — cela rassure Hugo que ses équipes ne seront jamais bloquées en situation critique.",
+            "skill": "use_case_design"
+          }
+        },
+        {
+          "id": "lunch_adrien",
+          "label": "Déjeuner avec Adrien Leclercq pour évaluer la dette technique secrète",
+          "effects": { "adrien_l": 20, "marc_f": 8 },
+          "feedback": {
+            "result": "Adrien t'a confié des informations sensibles sur l'état réel du SI que tu n'aurais jamais obtenu en réunion formelle.",
+            "explanation": "Les DSI dans une situation de pression ont besoin d'un confident. En dehors des réunions formelles, ils partagent les vraies contraintes. Ces informations sont précieuses pour calibrer ta proposition.",
+            "optimal": "Utilise ces informations pour proposer un chemin de remédiation réaliste — pas idéal mais faisable dans le contexte réel. Cela renforce ta crédibilité.",
+            "skill": "intelligence_gathering"
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "proposal_zero_trust",
+          "label": "Proposer une architecture Zero Trust avec roadmap 18 mois et quick wins sécurité",
+          "effects": { "marc_f": 20, "isabelle_r": 15, "adrien_l": 12, "sophie_w": 10 },
+          "feedback": {
+            "result": "Marc Fontaine a dit pour la première fois : 'C'est exactement ce dont nous avons besoin.' La proposition est en cours de validation.",
+            "explanation": "Zero Trust est le modèle de sécurité de référence pour les data sensibles. Associer une vision long terme (18 mois) à des quick wins (MFA, segmentation réseau) satisfait à la fois l'urgence de la DG et la rigueur du RSSI.",
+            "optimal": "Inclure 3 quick wins avec estimation d'effort ≤ 2 semaines chacun. Cela montre que tu peux démarrer sans attendre la roadmap complète.",
+            "skill": "solution_design"
+          }
+        },
+        {
+          "id": "proposal_audit_only",
+          "label": "Proposer uniquement l'audit — laisser HealthData implémenter seul",
+          "effects": { "marc_f": 8, "isabelle_r": -5, "adrien_l": 5 },
+          "feedback": {
+            "result": "Isabelle Renaud a demandé si tu pouvais aussi faire l'implémentation — elle n'a pas le temps d'aller chercher un autre prestataire.",
+            "explanation": "Un audit seul sans accompagnement est perçu comme une prestation incomplète en situation de crise. Isabelle veut un partenaire qui résout le problème de bout en bout.",
+            "optimal": "Propose toujours audit + plan de remédiation + accompagnement optionnel. Le client choisira sa profondeur d'engagement, mais il sait que tu peux tout faire.",
+            "skill": "deal_structuring"
+          }
+        },
+        {
+          "id": "proposal_soc_managed",
+          "label": "Proposer un SOC managé 24/7 en complément de l'audit",
+          "effects": { "marc_f": 15, "isabelle_r": 10, "clara_p": 12, "hugo_m": -8 },
+          "feedback": {
+            "result": "Marc adore l'idée mais Hugo Marin craint l'impact sur la disponibilité des systèmes médicaux.",
+            "explanation": "Un SOC managé est une proposition de valeur forte mais perçue comme intrusive par les équipes métier. Associer l'offre à un SLA de disponibilité médicale désamorce cette résistance.",
+            "optimal": "Intègre un mode 'observation only' pour les systèmes médicaux critiques avant de passer en mode actif — cela rassure Hugo et Marc simultanément.",
+            "skill": "objection_handling"
+          }
+        }
+      ]
+    },
+    "reference_visit": {
+      "cost": 3,
+      "choices": [
+        {
+          "id": "ref_health_client",
+          "label": "Organiser un call avec un RSSI hospitalier qui a mené un projet similaire avec toi",
+          "effects": { "marc_f": 25, "isabelle_r": 15, "sophie_w": 10 },
+          "feedback": {
+            "result": "Le call a duré 1h30. Marc Fontaine a échangé des numéros avec le RSSI référence. 'Il m'a dit exactement ce que j'avais besoin d'entendre.'",
+            "explanation": "La référence sectorielle est ici critique : un RSSI du secteur santé parlant à un autre RSSI santé crée une confiance impossible à construire commercialement. Les problèmes sont spécifiques — réglementaires, techniques, organisationnels.",
+            "optimal": "Prépare le RSSI référence en lui donnant les points de blocage de Marc. Il saura comment rassurer son homologue sur les sujets précis qui bloquent.",
+            "skill": "social_proof"
+          }
+        }
+      ]
+    },
+    "event_response": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "event_incident_simulation",
+          "label": "Proposer un exercice de simulation d'incident (Red Team vs Blue Team) en présence de la DG",
+          "effects": { "isabelle_r": 20, "marc_f": 18, "adrien_l": 10 },
+          "feedback": {
+            "result": "L'exercice a révélé 3 vecteurs critiques. Isabelle Renaud a signé le bon de commande le lendemain.",
+            "explanation": "Une simulation d'incident est une démonstration de valeur en temps réel. Elle transforme une menace abstraite (cyberattaque) en risque concret et visible, créant une urgence légitime qui accélère la décision.",
+            "optimal": "Structure le Red Team pour qu'il trouve quelque chose de réel mais pas catastrophique — assez pour alarmer sans déclencher la panique. Prépare toujours une recommandation corrective immédiate.",
+            "skill": "demonstration"
+          }
+        },
+        {
+          "id": "event_certif_pathway",
+          "label": "Présenter un parcours de certification HDS/ISO 27001 pour HealthData",
+          "effects": { "sophie_w": 15, "clara_p": 18, "isabelle_r": 8 },
+          "feedback": {
+            "result": "Clara Petit a fait de la certification HDS un objectif stratégique officiel — ton projet est maintenant lié à cet enjeu de direction.",
+            "explanation": "Lier ton projet à une certification crée un ancrage stratégique. Une certification HDS est un avantage concurrentiel pour HealthData — et elle ne peut pas l'obtenir sans ton audit.",
+            "optimal": "Identifie les certifications que les concurrents de HealthData ont déjà obtenues et mentionne-les à Isabelle. La FOMO (fear of missing out) est un puissant accélérateur de décision.",
+            "skill": "regulatory_framing"
+          }
+        }
+      ]
+    }
+  },
+  "endings": {
+    "won": {
+      "condition": "marc_f.relation >= 55 AND isabelle_r.relation >= 60",
+      "narrative": "Isabelle Renaud a signé pour l'audit complet + la roadmap Zero Trust. Marc Fontaine t'a serré la main et dit : 'Pour une fois, j'ai l'impression d'avoir en face de moi quelqu'un qui comprend vraiment ce qu'est un SI de santé.' Un deal à 280k€ dans un secteur où la confiance est tout.",
+      "xp": 750,
+      "badges": ["cyber_guardian"],
+      "carry_over": {
+        "HealthData_champion": "sophie_w",
+        "sante_reputation": "+20"
+      }
+    },
+    "lost": {
+      "condition": "marc_f.relation < 35 OR isabelle_r.relation < 40",
+      "narrative": "HealthData a préféré un cabinet spécialisé en cybersécurité santé avec une équipe 100% dédiée. Marc Fontaine n'a jamais été convaincu de ta crédibilité technique spécifique au secteur.",
+      "xp": 180,
+      "badges": [],
+      "carry_over": {}
+    },
+    "pending": {
+      "condition": "marc_f.relation >= 40 AND isabelle_r.relation >= 45",
+      "narrative": "HealthData hésite encore entre deux prestataires. Marc Fontaine veut un dernier proof of concept technique avant de décider.",
+      "xp": 280,
+      "badges": [],
+      "carry_over": {}
+    }
+  }
+}

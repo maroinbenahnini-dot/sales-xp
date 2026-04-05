@@ -1,0 +1,317 @@
+{
+  "id": "ACT3-S1",
+  "title": "Le Grand Compte",
+  "act": 3,
+  "theme": "dwp",
+  "difficulty": "hard",
+  "duration_weeks": 12,
+  "actions_per_week": 4,
+  "context": {
+    "company": "BancoPrime SA",
+    "industry": "Banque & Services Financiers",
+    "deal_size": "950k€",
+    "brief": "BancoPrime SA, 4e banque française avec 8 200 collaborateurs, lance un projet de modernisation de l'ensemble de son poste de travail : migration O365, déploiement Teams, MDM sur 8 000 devices, Zero Trust endpoint. Le DSI est ancien — il part à la retraite dans 6 mois et veut finir sur un projet marquant. La DRH exige que la transformation ne perturbe pas les négociations annuelles. Le RSSI est sous injonction DORA. Et le représentant syndical veut son mot à dire. C'est le deal le plus complexe de ta carrière."
+  },
+  "stakeholders": [
+    {
+      "id": "gilles_p",
+      "name": "Gilles Perrot",
+      "role": "DSI (partant dans 6 mois)",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Terminer sa carrière sur un projet structurant dont il sera fier",
+      "hidden_fear": "Peur que le projet soit attribué après son départ et qu'il n'en voit jamais le résultat",
+      "preferred_channel": "meeting",
+      "initial_relation": 30
+    },
+    {
+      "id": "marie_h",
+      "name": "Marie Hernandez",
+      "role": "DRH",
+      "influence": 4,
+      "type": "decision_maker",
+      "visible_motivation": "Que la transformation digitale améliore l'expérience collaborateur",
+      "hidden_fear": "Que le projet déclenche un conflit social pendant les NAO (négociations annuelles obligatoires)",
+      "preferred_channel": "lunch",
+      "initial_relation": 20
+    },
+    {
+      "id": "eric_w",
+      "name": "Éric Wahl",
+      "role": "RSSI (sous injonction DORA)",
+      "influence": 4,
+      "type": "blocker",
+      "visible_motivation": "Mettre en conformité le SI avec la réglementation DORA avant l'échéance réglementaire",
+      "hidden_fear": "Être sanctionné personnellement par l'ACPR si un incident survient pendant la migration",
+      "preferred_channel": "email",
+      "initial_relation": 10
+    },
+    {
+      "id": "valerie_n",
+      "name": "Valérie Noël",
+      "role": "Directrice Digital & Innovation",
+      "influence": 3,
+      "type": "champion",
+      "visible_motivation": "Positionner BancoPrime comme une banque moderne et attractive pour les talents",
+      "hidden_fear": "Que le projet soit perçu comme purement technique et pas comme une transformation culturelle",
+      "preferred_channel": "event_response",
+      "initial_relation": 50
+    },
+    {
+      "id": "claude_b",
+      "name": "Claude Besson",
+      "role": "CFO",
+      "influence": 3,
+      "type": "influencer",
+      "visible_motivation": "Maximiser le ROI et étaler les coûts sur 3 ans",
+      "hidden_fear": "Les projets IT qui dérapent en budget — il en a vécu deux catastrophiques",
+      "preferred_channel": "email",
+      "initial_relation": 15
+    },
+    {
+      "id": "thierry_m",
+      "name": "Thierry Morvan",
+      "role": "Délégué Syndical (CFDT)",
+      "influence": 3,
+      "type": "blocker",
+      "visible_motivation": "S'assurer que les collaborateurs sont formés et consultés avant tout déploiement",
+      "hidden_fear": "Que la transformation serve de prétexte à des suppressions de postes IT",
+      "preferred_channel": "meeting",
+      "initial_relation": 5
+    },
+    {
+      "id": "arnaud_c",
+      "name": "Arnaud Coste",
+      "role": "Responsable Poste de Travail",
+      "influence": 2,
+      "type": "influencer",
+      "visible_motivation": "Simplifier la gestion des 8 200 devices pour son équipe de 12 personnes",
+      "hidden_fear": "Peur de perdre le contrôle des outils si tout est géré par un prestataire externe",
+      "preferred_channel": "meeting",
+      "initial_relation": 25
+    }
+  ],
+  "actions": {
+    "email": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "email_dora_compliance",
+          "label": "Envoyer une analyse DORA spécifique : comment le projet couvre les exigences ICT Risk Management",
+          "effects": { "eric_w": 20, "gilles_p": 10, "claude_b": 8 },
+          "feedback": {
+            "result": "Éric Wahl t'a répondu en 20 minutes. Il a ajouté ton email en pièce jointe de son dossier ACPR.",
+            "explanation": "DORA (Digital Operational Resilience Act) est l'obsession réglementaire des RSSI bancaires en 2024-2025. Montrer que ton projet DWP couvre les exigences ICT Risk (article 5 à 16) te positionne comme expert et non comme simple vendeur de licences.",
+            "optimal": "Mappe chaque exigence DORA sur une fonctionnalité concrète de ta solution. Un tableau en 2 colonnes (Exigence DORA → Ce que tu livres) est plus efficace qu'un long document.",
+            "skill": "regulatory_framing"
+          }
+        },
+        {
+          "id": "email_adoption_plan",
+          "label": "Envoyer un plan de conduite du changement axé expérience collaborateur",
+          "effects": { "marie_h": 18, "valerie_n": 12, "thierry_m": 8 },
+          "feedback": {
+            "result": "Marie Hernandez a transmis le plan à Thierry Morvan. C'est la première fois qu'un prestataire pense au syndicat avant qu'on le lui demande.",
+            "explanation": "Dans les grands comptes, la DRH et les syndicats sont des blockers silencieux qui peuvent tuer un projet en fin de parcours. Les inclure dès la phase de proposition est rare et très apprécié.",
+            "optimal": "Propose un 'Comité de Pilotage Collaborateur' avec un représentant syndical — cela crée un sentiment d'appropriation qui facilite l'adoption.",
+            "skill": "change_management"
+          }
+        },
+        {
+          "id": "email_roi_cfo",
+          "label": "Envoyer un modèle TCO sur 3 ans avec étalement de paiement et options de financement",
+          "effects": { "claude_b": 20, "gilles_p": 8 },
+          "feedback": {
+            "result": "Claude Besson a partagé ton modèle avec son équipe contrôle de gestion. Il demande un rendez-vous.",
+            "explanation": "Un CFO qui a vécu des dérapages budgétaires cherche de la prévisibilité avant tout. Un TCO avec scénarios (optimiste, réaliste, pessimiste) et options de financement (SaaS vs capex) répond directement à cette anxiété.",
+            "optimal": "Inclure un scénario 'inaction' avec le coût d'un incident de sécurité ou d'une non-conformité DORA — ça transforme 950k€ en investissement évident.",
+            "skill": "financial_framing"
+          }
+        }
+      ]
+    },
+    "meeting_request": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "meeting_gilles_legacy",
+          "label": "Rendez-vous avec Gilles : construire le projet autour de son héritage et sa vision finale",
+          "effects": { "gilles_p": 25, "valerie_n": 10, "arnaud_c": 8 },
+          "feedback": {
+            "result": "Gilles t'a confié qu'il veut que ce projet soit 'son Microsoft' — la transformation qui restera. Il t'a donné accès à son réseau interne.",
+            "explanation": "Un DSI en fin de carrière est mû par la recherche de sens et de reconnaissance. En cadrant le projet autour de son héritage (et pas des fonctionnalités Teams), tu crées une motivation personnelle irremplaçable.",
+            "optimal": "Propose que le projet porte son nom en interne ('Programme Gilles Perrot 2025'). La dimension symbolique est souvent plus puissante que le business case.",
+            "skill": "executive_engagement"
+          }
+        },
+        {
+          "id": "meeting_syndicat",
+          "label": "Réunion tripartite : Thierry Morvan + Marie Hernandez + toi",
+          "effects": { "thierry_m": 25, "marie_h": 15, "gilles_p": 5 },
+          "feedback": {
+            "result": "Thierry Morvan a accepté de signer une lettre de non-opposition au projet — un sésame rarissime.",
+            "explanation": "Les représentants syndicaux ne sont presque jamais impliqués dans les projets IT. Quand ils le sont en amont, ils deviennent souvent des alliés — car ils valorisent d'abord le respect de la consultation.",
+            "optimal": "Présente le projet comme 'un programme de montée en compétences' plutôt que comme une migration technique. Parle 'formations certifiantes' et 'évolution des métiers', pas 'déploiement de logiciels'.",
+            "skill": "stakeholder_alignment"
+          }
+        },
+        {
+          "id": "meeting_rssi_pentest",
+          "label": "Atelier technique avec Éric : simulation d'attaque endpoint et démonstration Zero Trust",
+          "effects": { "eric_w": 22, "gilles_p": 8, "arnaud_c": 12 },
+          "feedback": {
+            "result": "Éric a stoppé la simulation à mi-parcours : 'C'est la première démo technique qui me convainc vraiment.' Il veut inclure ton équipe dans son plan DORA.",
+            "explanation": "Un RSSI sous pression réglementaire veut voir, pas entendre. Une démo technique live (même simulée) sur un environnement de test prouve ce qu'aucune slide ne peut montrer.",
+            "optimal": "Prépare la démo en pré-exploitant une vraie vulnérabilité endpoint commune (pass-the-hash, LLMNR poisoning) pour montrer ce que Zero Trust bloque. Le choc de la réalité est un accélérateur de décision.",
+            "skill": "demonstration"
+          }
+        }
+      ]
+    },
+    "lunch": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "lunch_marie_nao",
+          "label": "Déjeuner avec Marie pour aligner le planning projet avec les NAO",
+          "effects": { "marie_h": 22, "thierry_m": 10, "gilles_p": 5 },
+          "feedback": {
+            "result": "Marie a intégré le projet dans son calendrier RH. Les NAO ne bloqueront plus le démarrage.",
+            "explanation": "Les cycles RH (NAO, bilan social, GPEC) sont ignorés par 90% des prestataires IT. Adapter son planning à ces contraintes invisibles crée une différenciation considérable et une confiance durable.",
+            "optimal": "Demande systématiquement à la DRH son calendrier RH sur 12 mois avant de proposer un planning projet.",
+            "skill": "intelligence_gathering"
+          }
+        },
+        {
+          "id": "lunch_valerie_vision",
+          "label": "Déjeuner avec Valérie pour co-construire la vision 'BancoPrime Digital Workplace 2026'",
+          "effects": { "valerie_n": 20, "gilles_p": 10, "marie_h": 8 },
+          "feedback": {
+            "result": "Valérie a présenté la vision au CODIR la semaine suivante avec ton logo dessus. Le projet a désormais un sponsor C-level fort.",
+            "explanation": "Une Directrice Digital en quête de légitimité a besoin de victoires visibles. Co-construire une vision nommée et datée lui donne un véhicule pour se positionner en interne.",
+            "optimal": "Propose un nom de programme attractif, un logo et une date de lancement — ce branding interne transforme un projet IT en initiative stratégique.",
+            "skill": "co_construction"
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "proposal_phased_early_win",
+          "label": "Proposer un pilote sur 500 postes dans 2 BU avec résultats mesurables avant généralisation",
+          "effects": { "gilles_p": 18, "claude_b": 15, "eric_w": 10, "arnaud_c": 12 },
+          "feedback": {
+            "result": "Gilles et Claude ont tous les deux signé le bon de commande du pilote. Le chemin vers le full rollout est balisé.",
+            "explanation": "Dans les grands comptes, un pilote bien structuré est souvent la seule façon de décrocher un premier engagement sur un deal > 500k€. Il réduit le risque perçu et crée un précédent positif.",
+            "optimal": "Choisis les 2 BU pilotes avec Gilles — pas au hasard. Identifie celles qui ont les utilisateurs les plus positifs à la nouveauté (les 'early adopters' internes).",
+            "skill": "deal_structuring"
+          }
+        },
+        {
+          "id": "proposal_full_scope",
+          "label": "Proposer le déploiement global en 8 mois avec gouvernance centralisée",
+          "effects": { "gilles_p": 8, "claude_b": -8, "thierry_m": -10, "eric_w": -5 },
+          "feedback": {
+            "result": "Claude Besson a demandé un report pour 'évaluation des risques'. Thierry Morvan a déposé une alerte au CHSCT.",
+            "explanation": "Un déploiement global sans pilote sur 8 200 postes est perçu comme irresponsable par un CFO prudent et un syndicat méfiant. L'ambition est bonne mais le timing est faux.",
+            "optimal": "Proposer l'ambition globale mais toujours avec une porte d'entrée limitée. 'On démarre sur 500, on prouve, on généralise' est beaucoup plus sécurisant.",
+            "skill": "deal_structuring"
+          }
+        },
+        {
+          "id": "proposal_dora_first",
+          "label": "Positionner le projet comme réponse prioritaire à DORA avec un quickstart sécurité",
+          "effects": { "eric_w": 22, "gilles_p": 12, "claude_b": 8 },
+          "feedback": {
+            "result": "Éric Wahl a imposé le projet à son CODIR comme 'impératif réglementaire'. Le budget est pré-autorisé.",
+            "explanation": "Transformer un projet de transformation en obligation réglementaire change radicalement la dynamique budgétaire. DORA est entré en application en janvier 2025 — les banques sont sous pression réelle.",
+            "optimal": "Toujours identifier l'angle réglementaire ou légal qui fait passer ton projet de 'option' à 'obligation'. C'est le raccourci le plus puissant dans le secteur bancaire.",
+            "skill": "regulatory_framing"
+          }
+        }
+      ]
+    },
+    "reference_visit": {
+      "cost": 3,
+      "choices": [
+        {
+          "id": "ref_bank_dora",
+          "label": "Organiser un call avec un RSSI bancaire qui a mené un projet DWP Zero Trust post-DORA",
+          "effects": { "eric_w": 25, "gilles_p": 12, "marie_h": 8 },
+          "feedback": {
+            "result": "Le call a duré 2h. Éric et le RSSI référence ont échangé leurs numéros. 'C'est la première fois qu'un prestataire me met en contact avec quelqu'un qui a vraiment vécu ça.'",
+            "explanation": "La référence sectorielle est décisive dans le secteur bancaire où les RSSI se connaissent tous. Un pair qui a résolu exactement le même problème réglementaire crée une preuve impossible à contester.",
+            "optimal": "Crée un club de RSSI sectoriels autour de toi — c'est un actif commercial qui génère des recommandations organiques.",
+            "skill": "social_proof"
+          }
+        },
+        {
+          "id": "ref_drh_visit",
+          "label": "Visite chez un client RH qui a mené un projet similaire sans conflit social",
+          "effects": { "marie_h": 22, "thierry_m": 18 },
+          "feedback": {
+            "result": "Thierry Morvan a rencontré son homologue syndical chez le client visité. Il est revenu convaincu. 'S'ils ont réussi à protéger les emplois, vous pouvez faire pareil.'",
+            "explanation": "Un représentant syndical qui parle à un autre représentant syndical satisfait d'une transformation similaire est le meilleur argument possible. La preuve par les pairs fonctionne aussi avec les syndicats.",
+            "optimal": "La visite cross-sectorielle (même problème, même public) est plus puissante qu'une visite dans le même secteur. Elle évite les objections 'mais votre client c'est différent'.",
+            "skill": "social_proof"
+          }
+        }
+      ]
+    },
+    "event_response": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "event_codir_presentation",
+          "label": "Préparer une présentation CODIR en 5 slides avec Valérie et Gilles",
+          "effects": { "gilles_p": 15, "valerie_n": 15, "claude_b": 10, "eric_w": 8 },
+          "feedback": {
+            "result": "Le CODIR a validé le projet à l'unanimité. Première fois en 10 ans selon Gilles.",
+            "explanation": "L'unanimité en CODIR est un graal rarement atteint. Elle se prépare en alignant chaque membre sur son enjeu personnel AVANT la présentation. Valérie (vision), Gilles (héritage), Claude (budget), Éric (conformité) — chacun doit se sentir gagnant.",
+            "optimal": "Fais une pré-réunion avec chaque sponsor avant le CODIR pour vérifier que ta slide répond à leur enjeu. Le CODIR se gagne en coulisse, pas en salle.",
+            "skill": "executive_engagement"
+          }
+        },
+        {
+          "id": "event_hackathon_adoption",
+          "label": "Organiser un hackathon Teams de 48h avec 50 collaborateurs volontaires",
+          "effects": { "valerie_n": 18, "marie_h": 12, "thierry_m": 15, "arnaud_c": 10 },
+          "feedback": {
+            "result": "Le hackathon a généré 12 use cases métier par les collaborateurs eux-mêmes. Thierry Morvan a participé et est reparti enthousiaste.",
+            "explanation": "Un hackathon d'adoption crée de l'ownership par le bas. Les collaborateurs qui ont co-créé des usages deviennent des ambassadeurs naturels auprès de leurs collègues — ce qu'aucune formation classique ne peut produire.",
+            "optimal": "Sélectionne 5 participants par département et inclus toujours un représentant syndical. Leur enthousiasme post-event est le meilleur vecteur de change management.",
+            "skill": "facilitation"
+          }
+        }
+      ]
+    }
+  },
+  "endings": {
+    "won": {
+      "condition": "gilles_p.relation >= 65 AND eric_w.relation >= 55 AND thierry_m.relation >= 45",
+      "narrative": "Gilles Perrot a signé le bon de commande de 950k€ entouré de son équipe. Avant de partir, il t'a dit : 'Dans 30 ans de carrière, je n'ai jamais vu un commercial comprendre autant les vrais enjeux d'une organisation.' Le projet sera dans son discours de retraite. Et Valérie Noël, sa successeure désignée, t'a déjà demandé un rendez-vous pour la phase 2.",
+      "xp": 1000,
+      "badges": ["ten_wins", "all_champions"],
+      "carry_over": {
+        "BancoPrime_account": "opened",
+        "banking_reputation": "+30"
+      }
+    },
+    "lost": {
+      "condition": "thierry_m.relation < 30 OR eric_w.relation < 30 OR gilles_p.relation < 45",
+      "narrative": "BancoPrime a choisi un intégrateur historique. La DRH a expliqué la décision à demi-mots : 'Votre approche était excellente techniquement, mais nous avions besoin d'un partenaire qui connaissait déjà nos réalités sociales.' Tu avais négligé soit le syndicat, soit le RSSI, soit le DSI sortant.",
+      "xp": 250,
+      "badges": [],
+      "carry_over": {}
+    },
+    "pending": {
+      "condition": "gilles_p.relation >= 50 AND eric_w.relation >= 40",
+      "narrative": "Le CODIR de BancoPrime hésite entre toi et un concurrent historique. Gilles Perrot a demandé un dernier rendez-vous de clarification avant de trancher.",
+      "xp": 400,
+      "badges": [],
+      "carry_over": {}
+    }
+  }
+}
