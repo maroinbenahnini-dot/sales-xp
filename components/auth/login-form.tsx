@@ -35,7 +35,8 @@ export function LoginForm() {
         toast.error(json.error ?? 'Erreur de connexion.')
         setIsPending(false)
       } else {
-        window.location.href = '/dashboard'
+        // Recharge la page — le proxy lit les cookies et redirige vers /dashboard
+        window.location.reload()
       }
     } catch {
       setErrorMsg('Impossible de contacter le serveur.')
