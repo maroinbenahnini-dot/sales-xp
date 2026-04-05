@@ -16,7 +16,8 @@ export function XpBar() {
     computeXpProgress(user.xp_total)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur"
+            style={{ paddingTop: 'env(safe-area-inset-top)', paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)' }}>
       <div className="container mx-auto px-4 h-14 flex items-center gap-4">
         <Link href="/dashboard" className="font-bold text-lg tracking-tight shrink-0">
           SalesXP
@@ -25,6 +26,9 @@ export function XpBar() {
         <nav className="flex gap-4 text-sm text-muted-foreground shrink-0">
           <Link href="/library" className="hover:text-foreground transition-colors">
             Bibliothèque
+          </Link>
+          <Link href="/materials" className="hover:text-foreground transition-colors hidden sm:block">
+            Sales Material
           </Link>
         </nav>
 

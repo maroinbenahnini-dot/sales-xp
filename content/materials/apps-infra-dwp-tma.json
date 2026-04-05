@@ -1,0 +1,142 @@
+[
+  {
+    "id": "apps-cheatsheet",
+    "title": "Apps — Vendre des projets de développement",
+    "subtitle": "Comprendre les projets applicatifs pour mieux les vendre",
+    "theme": "apps",
+    "type": "cheatsheet",
+    "read_time_min": 7,
+    "key_numbers": [
+      "66% des projets logiciels dépassent le budget ou les délais (Standish Group)",
+      "L'agilité réduit les échecs projet de 28% vs méthode Cascade",
+      "Dette technique : les entreprises dépensent 30% de leur budget IT à maintenir du legacy",
+      "Coût d'un bug : x100 en production vs en phase de design"
+    ],
+    "tags": ["agile", "devops", "mobile", "react", "microservices", "api"],
+    "sections": [
+      {
+        "title": "Les types de projets applicatifs",
+        "content": "**Application web** — Accessible via navigateur. Front-end (React, Angular, Vue) + Back-end (Node.js, Java Spring, Python Django) + Base de données.\n\n**Application mobile** :\n- `Native` : iOS (Swift/Objective-C) + Android (Kotlin/Java). Performances maximales, coût x2.\n- `Hybride/Cross-platform` : React Native, Flutter. Un seul code pour iOS et Android. 80% des cas d'usage couverts à moindre coût.\n- `PWA (Progressive Web App)` : site web qui se comporte comme une app mobile. Pas de store, mais fonctionnalités limitées.\n\n**API / Back-end** : Couche logique métier. REST API, GraphQL. Microservices vs monolithe.\n\n**Refonte applicative** : migration d'un logiciel legacy vers des technologies modernes. Souvent le projet le plus risqué — et le plus lucratif."
+      },
+      {
+        "title": "Méthodes de développement — Agile vs Cascade",
+        "content": "**Cycle en V (Cascade / Waterfall)** — On spécifie tout au début, on développe, on livre à la fin. Problème : on découvre les vrais besoins en livraison.\n\n**Méthode Agile** — Développements itératifs en sprints de 2 semaines. Le client voit et valide régulièrement. Adapté à l'incertitude.\n\n**Scrum** — Framework Agile le plus répandu. Rôles : Product Owner (priorités business), Scrum Master (facilitation), Équipe (dev). Cérémonies : sprint planning, daily standup, sprint review, retrospective.\n\n**Kanban** — Flux continu plutôt que sprints. Tableau avec colonnes : To Do / In Progress / Done. Idéal pour le support et la maintenance.\n\n**SAFe (Scaled Agile Framework)** — Agile à l'échelle de l'entreprise. Pour les projets avec 50+ développeurs.\n\n**Ce que tu dois retenir pour vendre** : 'Nous travaillons en Agile — vous voyez le produit toutes les 2 semaines et vous pouvez ajuster les priorités. Vous ne découvrez pas le résultat 18 mois plus tard.'"
+      },
+      {
+        "title": "DevOps & CI/CD — expliquer simplement",
+        "content": "**DevOps** = rapprocher les équipes de développement (Dev) et d'exploitation (Ops) pour livrer plus vite et plus fiable.\n\n**CI (Continuous Integration)** : à chaque commit, les tests s'exécutent automatiquement. Les bugs sont détectés dans l'heure, pas en production.\n\n**CD (Continuous Delivery/Deployment)** : le code validé est automatiquement déployé en préproduction ou production.\n\n**Pipeline CI/CD** : chaîne automatisée. Code → Tests → Build → Deploy. Outils : GitHub Actions, GitLab CI, Jenkins, Azure DevOps.\n\n**Infrastructure as Code (IaC)** : l'infrastructure est décrite dans du code. Terraform, Ansible. Reproductible, versionnable.\n\n**Conteneurisation** : Docker + Kubernetes. Les applications sont packagées dans des conteneurs portables. 'Ça marche sur ma machine' est éliminé.\n\n**Argument commercial** : 'Avec notre pratique DevOps, on passe de 1 livraison par trimestre à plusieurs livraisons par semaine. Vos utilisateurs ont les nouvelles fonctionnalités en jours, pas en mois.'"
+      },
+      {
+        "title": "Architecture microservices vs monolithe",
+        "content": "**Monolithe** — Application unique et indivisible. Simple à développer au début, devient un problème avec la croissance. Un bug peut tout faire tomber. Mise à l'échelle complexe.\n\n**Microservices** — Application découpée en petits services indépendants (ex: Service Commande, Service Paiement, Service Catalogue). Chaque service peut être déployé, mis à l'échelle et modifié indépendamment.\n\n**Avantages microservices** : résilience, scalabilité fine, équipes autonomes, technologies différentes par service.\n\n**Inconvénients** : complexité opérationnelle (réseau, sécurité inter-services, observabilité). Kubernetes devient presque obligatoire.\n\n**Conseil sales** : ne pas promettre les microservices à tout le monde. Une startup ou une PME démarre souvent avec un monolithe bien structuré (monorepo modulaire). Les microservices se justifient à partir d'une certaine échelle ou contrainte de déploiement indépendant."
+      },
+      {
+        "title": "Les objections classiques sur les projets Apps",
+        "content": "**'Nos specs ne sont pas encore finalisées'**\nRéponse : 'C'est exactement pourquoi l'Agile existe. Vous n'avez pas besoin de spécifications parfaites pour démarrer — on commence par les fonctionnalités à plus forte valeur, et les specs s'affinent avec chaque sprint. Attendre des specs parfaites, c'est attendre indéfiniment.'\n\n**'On veut un forfait fixe avec prix et délai garantis'**\nRéponse : 'En logiciel, un forfait fixe transfère le risque sur le prestataire, qui compensera en sous-estimant la qualité ou en ajoutant des avenants. Notre modèle Time & Materials avec jalons contractuels vous donne la visibilité budgétaire et la flexibilité pour ajuster les priorités.'\n\n**'Vous allez créer de la dépendance'**\nRéponse : 'Nous livrons tout le code source, la documentation et les tests. Votre équipe peut reprendre ou changer de prestataire à tout moment. Notre valeur est dans notre expertise, pas dans le verrouillage.'"
+      }
+    ]
+  },
+  {
+    "id": "infra-cheatsheet",
+    "title": "Infra — Ce que tout Sales doit savoir",
+    "subtitle": "Réseaux, datacenter, virtualisation : parler le langage des DSI Infra",
+    "theme": "infra",
+    "type": "cheatsheet",
+    "read_time_min": 7,
+    "key_numbers": [
+      "Durée de vie moyenne d'un serveur physique : 5-7 ans",
+      "Taux de virtualisation moyen en entreprise : 80-90% des workloads",
+      "PRA/PCA : RTO moyen visé par les entreprises = 4h, RPO = 1h",
+      "Coût d'une heure de downtime en production : 100k€ à 5M€ selon secteur"
+    ],
+    "tags": ["datacenter", "virtualisation", "vmware", "réseau", "pra", "hyperconvergence"],
+    "sections": [
+      {
+        "title": "Les briques fondamentales de l'infrastructure",
+        "content": "**Serveurs** : physiques (bare metal) ou virtuels (VM). Les serveurs physiques hébergent des hyperviseurs qui font tourner plusieurs VMs.\n\n**Hyperviseur** : logiciel qui virtualise les ressources hardware. `VMware vSphere/ESXi` = standard historique (en cours de migration post-acquisition Broadcom). `Microsoft Hyper-V`, `Proxmox` (open source), `KVM`.\n\n**Stockage SAN/NAS** : \n- `SAN (Storage Area Network)` : réseau dédié au stockage haute performance. Pour les bases de données critiques.\n- `NAS (Network Attached Storage)` : partage de fichiers sur le réseau. Plus simple, moins performant.\n- `SDS (Software Defined Storage)` : stockage défini par logiciel. Veeam, NetApp ONTAP, Ceph.\n\n**Réseau** :\n- `Switch` : connecte les équipements en réseau local (LAN)\n- `Routeur` : interconnecte des réseaux différents\n- `Firewall` : filtre les flux réseau\n- `SD-WAN` : réseau WAN défini par logiciel. Agrège plusieurs liens internet. Remplace les MPLS coûteux.\n- `VLAN` : segmentation logique du réseau."
+      },
+      {
+        "title": "Hyperconvergence — le pitch qui fait mouche",
+        "content": "**Problème classique** : infrastructure classique = serveurs + baie de stockage SAN + réseau dédié. Complexe, cher, compétences multiples requises.\n\n**Hyperconvergence (HCI)** : on intègre compute + storage + networking dans des nœuds standardisés. Tout est géré par un seul logiciel. Scale out en ajoutant des nœuds.\n\n**Leaders** : Nutanix (pioneer), VMware vSAN, Dell VxRail, HPE SimpliVity.\n\n**Arguments commerciaux** :\n- Réduction des coûts OPEX : 1 interface pour tout gérer\n- Scalabilité granulaire : on ajoute un nœud selon le besoin\n- Résilience native : données répliquées entre nœuds\n- Déploiement rapide : heures vs semaines pour une infra classique\n\n**Objection** : 'C'est plus cher à l'achat.' Réponse : 'Le TCO sur 3 ans est inférieur quand on intègre les coûts de gestion, les licences séparées et les interventions spécialisées.'"
+      },
+      {
+        "title": "PRA/PCA — L'argument de la continuité",
+        "content": "**RTO (Recovery Time Objective)** : combien de temps peut-on tolérer d'interruption ? 4h, 1h, 0 ?\n\n**RPO (Recovery Point Objective)** : quelle perte de données est acceptable ? 24h de données, 1h, 0 ?\n\n**PRA (Plan de Reprise d'Activité)** : retour à la normale après un sinistre. Délai acceptable. Peut impliquer une bascule manuelle.\n\n**PCA (Plan de Continuité d'Activité)** : continuité sans interruption. Implique une infrastructure de réplication en temps réel. Plus cher.\n\n**Les niveaux de reprise** :\n- `Backup simple` : RTO de 24h+. Minimum vital.\n- `Réplication asynchrone` : RTO de 4-8h. RPO de 15min-1h.\n- `Réplication synchrone` : RTO quasi nul. RPO nul. Site secondaire actif-actif.\n\n**Comment en parler** : 'Si votre datacenter principal brûle ce soir, dans combien de temps vos collaborateurs peuvent-ils reprendre le travail ? Et combien de données perdez-vous ?' Le silence qui suit cette question ouvre souvent le budget PRA."
+      },
+      {
+        "title": "La crise VMware post-Broadcom — ton opportunité",
+        "content": "**Ce qui s'est passé** : Broadcom a acquis VMware en novembre 2023 et a brutalement modifié le modèle de licences. Fin des licences perpétuelles, passage en abonnement obligatoire, augmentations de prix de 300 à 600%.\n\n**Impact pour les clients** : Les entreprises sous VMware voient leurs coûts exploser au renouvellement de contrat. Beaucoup cherchent des alternatives.\n\n**Ton angle commercial** : 'Votre contrat VMware arrive à renouvellement quand ? Si c'est dans moins de 18 mois, c'est maintenant qu'il faut évaluer vos options.'\n\n**Alternatives à pitcher** :\n- `Migration cloud` : si les workloads s'y prêtent (AWS EC2, Azure VM)\n- `Nutanix AHV` : hyperviseur intégré dans Nutanix, sans surcoût\n- `Proxmox` : open source, communauté active, migration depuis VMware possible\n- `Microsoft Hyper-V` : si le client est déjà sous écosystème Microsoft"
+      }
+    ]
+  },
+  {
+    "id": "dwp-cheatsheet",
+    "title": "DWP — Digital Workplace expliqué aux Sales",
+    "subtitle": "Microsoft 365, postes de travail, mobilité : tout ce qu'il faut savoir",
+    "theme": "dwp",
+    "type": "cheatsheet",
+    "read_time_min": 6,
+    "key_numbers": [
+      "300 millions d'utilisateurs Microsoft 365 dans le monde",
+      "Coût d'un poste de travail géré manuellement : 800-1200€/an vs 400-600€ avec MDM",
+      "Temps moyen de déploiement d'un poste classique : 4h vs 30 min avec Autopilot",
+      "85% des entreprises utilisent Microsoft 365 ou Google Workspace en 2025"
+    ],
+    "tags": ["microsoft365", "teams", "mdm", "intune", "autopilot", "zero-trust", "poste de travail"],
+    "sections": [
+      {
+        "title": "L'écosystème Microsoft 365 — ce que tu dois maîtriser",
+        "content": "**Microsoft 365 (M365)** = suite d'outils cloud pour la productivité. Ancien Office 365.\n\nLes licences clés à connaître :\n- `M365 Business Basic/Standard/Premium` : PME. Premium inclut Intune + Defender.\n- `M365 E3` : grandes entreprises. Compliance, sécurité avancée.\n- `M365 E5` : niveau maximum. Defender complet, Purview (gouvernance données), Power BI Pro inclus.\n\nLes outils incontournables :\n- `Microsoft Teams` : messagerie + visio + collaboration. A remplacé Skype, challenge Slack/Zoom.\n- `SharePoint` : intranet et gestion documentaire. Souvent sous-exploité.\n- `OneDrive` : stockage cloud personnel (1To/utilisateur). Synchronisation des fichiers.\n- `Power Platform` : Power BI (data viz), Power Automate (automatisation), Power Apps (apps no-code). Énorme opportunité de vente.\n- `Copilot for M365` : IA générative intégrée dans Teams, Word, Excel. Licence à 30€/user/mois."
+      },
+      {
+        "title": "MDM / UEM — gérer les postes et mobiles à grande échelle",
+        "content": "**MDM (Mobile Device Management)** : gestion centralisée des terminaux (PC, Mac, smartphones, tablettes).\n\n**UEM (Unified Endpoint Management)** : MDM étendu à tous les terminaux. Intune de Microsoft est devenu le standard.\n\n**Microsoft Intune** :\n- Déploiement et configuration des postes à distance\n- Politiques de conformité (le poste doit être chiffré, avoir un antivirus, etc.)\n- Effacement à distance (BYOD : effacement sélectif des données pro)\n- Intégration avec Azure AD / Entra ID pour le Zero Trust\n\n**Windows Autopilot** : le poste sort du carton, l'utilisateur se connecte avec ses identifiants, tout se configure automatiquement. Fini les images manuelles.\n\n**BYOD (Bring Your Own Device)** : l'utilisateur utilise son appareil personnel au travail. Politique MAM (Mobile Application Management) pour séparer les données pro des persos.\n\n**Argument sales** : 'Votre équipe IT passe encore 4h à configurer chaque poste manuellement ? Avec Autopilot + Intune, le collaborateur reçoit son PC par la Poste et est opérationnel en 30 minutes, sans intervention IT.'"
+      },
+      {
+        "title": "Conduite du changement — la vraie complexité du DWP",
+        "content": "Un projet DWP réussit à 20% sur la technique et à 80% sur l'adoption. C'est là que les ESN gagnent ou perdent.\n\n**Les 3 niveaux de résistance** :\n1. **Technique** : 'Le nouveau Teams n'a pas la même interface.' → Formation, guides visuels.\n2. **Organisationnelle** : 'On avait nos habitudes avec les dossiers partagés.' → Co-construction des nouveaux usages.\n3. **Culturelle** : 'Je ne veux pas qu'on surveille mon activité avec Intune.' → Communication transparente sur ce qui est supervisé et ce qui ne l'est pas.\n\n**Le Change Management en pratique** :\n- Identifier les `champions` internes : ambassadeurs dans chaque département\n- `Pilote` avant déploiement général : choisir une BU enthousiaste\n- `Formation contextuelle` : tutoriels intégrés dans Teams, pas des sessions de 8h en salle\n- `Mesure d'adoption` : rapports d'usage M365 (qui utilise quoi), objectifs définis\n\n**Ce que les clients achètent vraiment** : pas la migration O365, mais la transformation de la manière dont leurs collaborateurs travaillent. Pitch différenciant : 'Nous ne déployons pas des logiciels — nous transformons des usages.'"
+      },
+      {
+        "title": "Les tendances DWP en 2025",
+        "content": "**Copilot for M365** : IA générative dans les outils quotidiens. Résume les réunions Teams, rédige des emails, analyse des fichiers Excel. À 30€/user/mois. Grosse opportunité d'upsell pour les clients déjà M365.\n\n**Virtual Desktop Infrastructure (VDI) / AVD** : Azure Virtual Desktop. Les postes de travail dans le cloud. Accès depuis n'importe quel terminal. Idéal pour les sous-traitants, les saisonniers, le BYOD.\n\n**Zero Trust Endpoint** : Intune + Entra ID + Defender = stack Zero Trust. Chaque poste doit prouver sa conformité avant d'accéder aux ressources.\n\n**Experience Management** : mesure l'expérience utilisateur du poste (temps de démarrage, latence applis). Nexthink, Aternity. Données factuelles pour prioriser les améliorations IT.\n\n**Sustainability IT** : bilan carbone du parc informatique. Les clients ESG le demandent. Argument différenciant : 'Notre pilote Autopilot prolonge la durée de vie des postes de 2 ans, réduisant votre empreinte carbone de 30%.'"
+      }
+    ]
+  },
+  {
+    "id": "tma-cheatsheet",
+    "title": "TMA — Vendre et gérer les contrats de maintenance",
+    "subtitle": "Comprendre la TMA pour décrocher et structurer des contrats récurrents",
+    "theme": "tma",
+    "type": "cheatsheet",
+    "read_time_min": 6,
+    "key_numbers": [
+      "La TMA représente 30-40% du budget IT des grandes entreprises françaises",
+      "Coût moyen d'un changement de prestataire TMA : 6-18 mois de transition",
+      "SLA P1 standard : résolution en 4h ouvrées sur les applications critiques",
+      "Taux de renouvellement d'un contrat TMA bien géré : 85-90%"
+    ],
+    "tags": ["tma", "sla", "maintenance", "run", "gouvernance", "itil"],
+    "sections": [
+      {
+        "title": "Qu'est-ce que la TMA — les bases",
+        "content": "**TMA (Tierce Maintenance Applicative)** : externalisation de la maintenance des applications informatiques d'une entreprise à un prestataire tiers (toi).\n\n**Ce que ça couvre** :\n- `Maintenance corrective` : correction des bugs et incidents\n- `Maintenance évolutive` : nouvelles fonctionnalités demandées par le métier\n- `Maintenance adaptive` : adaptation aux évolutions de l'environnement (new OS, new DB, RGPD...)\n- `Maintenance préventive` : optimisations proactives pour éviter les incidents\n\n**Le Run** : exploitation et supervision des applications en production. Monitoring, gestion des incidents, astreintes.\n\n**Différence TMA / TRA** : TMA = applications. TRA (Tierce Recette Applicative) = tests et validation.\n\n**Modèles contractuels** :\n- `Forfait` : budget fixe mensuel. Confortable pour le client, risqué pour toi si sous-estimé.\n- `UO (Unité d'Œuvre)` : facturation à la demande (par ticket, par point de fonction). Transparent mais variable pour le client.\n- `Mixte` : forfait de base + régie pour les évolutions. Le plus fréquent."
+      },
+      {
+        "title": "Les SLA — ce qu'il faut savoir négocier",
+        "content": "**SLA (Service Level Agreement)** : engagement contractuel sur les niveaux de service. C'est le cœur du contrat TMA.\n\n**Les métriques clés** :\n- `Disponibilité` : % du temps où l'application est accessible. 99.5% = 43h de downtime autorisé/an.\n- `MTTR (Mean Time To Repair)` : temps moyen de résolution\n- `MTBF (Mean Time Between Failures)` : temps moyen entre deux incidents\n\n**Les priorités d'incident** :\n- `P1 - Critique` : application indisponible, perte de CA direct. Résolution : 4h. Astreinte 24/7 requise.\n- `P2 - Majeur` : dégradation significative. Résolution : 8h ouvrées.\n- `P3 - Mineur` : impact limité. Résolution : 48-72h ouvrées.\n- `P4 - Amélioration` : pas d'urgence. Planifié au prochain sprint.\n\n**Les pénalités** : en cas de non-respect du SLA, le client applique des pénalités (souvent 5-10% du mensuel par palier dépassé). **Ne jamais signer des SLA inatteignables** — et toujours inclure des exclusions (indisponibilité due au client, cas de force majeure)."
+      },
+      {
+        "title": "Gouvernance TMA — la différence entre gagner et perdre un renouvellement",
+        "content": "Un contrat TMA se perd rarement sur les SLA techniques — il se perd sur la relation et la visibilité.\n\n**Le modèle de gouvernance standard** :\n- `Comité Opérationnel (COPO)` : hebdomadaire. Revue des incidents, backlog, capacité. Interlocuteurs : chef de projet TMA + DSI opérationnel.\n- `Comité de Pilotage (COPIL)` : mensuel. Suivi KPIs, satisfaction, évolutions majeures. Interlocuteurs : direction de compte + DSI.\n- `Comité Stratégique` : trimestriel ou annuel. Plan de transformation, budget, roadmap. Interlocuteurs : direction commerciale + DAF/DSI.\n\n**Le reporting mensuel** : livrable contractuel. Contient : taux de SLA atteints, nombre de tickets par priorité, délai moyen de résolution, backlog en cours, incidents récurrents et plan de remédiation, indicateur de satisfaction (NPS).\n\n**Conseil** : les clients n'achètent pas du reporting — ils achètent la **tranquillité d'esprit**. Ton chef de projet TMA doit appeler le client avant que le client l'appelle."
+      },
+      {
+        "title": "Knowledge Transfer — la transition qui fait peur",
+        "content": "La transition (reprise d'un contrat TMA) est la phase la plus risquée. Bien la gérer, c'est déjà gagner la confiance pour 3 ans.\n\n**Les 3 phases de transition standard** :\n\n**Phase 1 : Audit (J0 à J+30)** : cartographie du SI, revue du code, inventaire des applications, entretiens avec les équipes sortantes et internes. Livrable : rapport d'audit avec risques identifiés.\n\n**Phase 2 : Shadowing (J+30 à J+60)** : tes équipes observent, les équipes sortantes traitent. Montée en compétences progressive.\n\n**Phase 3 : Prise en charge (J+60 à J+90)** : tes équipes traitent, les équipes sortantes supervisent. Transfert définitif à J+90.\n\n**Le Knowledge Base** : documentation vivante. Wiki, procédures d'exploitation, runbooks. Capital immatériel du contrat — souvent inexistant chez le prestataire sortant. C'est ton avantage.\n\n**Argument pour décrocher** : 'Notre plan de transition inclut un audit complet en 30 jours et une base documentaire livrée à J+90. Vous avez eu des problèmes avec la documentation de votre prestataire actuel ? Voilà comment on règle ça dès le départ.'"
+      },
+      {
+        "title": "Comment gagner un appel d'offre TMA",
+        "content": "**Ce que les clients regardent vraiment** (dans l'ordre) :\n1. **Références sectorielles** : 'Avez-vous géré des applications similaires aux nôtres ?'\n2. **Stabilité de l'équipe** : 'Qui va vraiment s'occuper de nous ?' Les clients craignent le 'bait and switch' (profils présentés en AO remplacés par des juniors).\n3. **Plan de transition** : credibilité et réalisme du plan J0-J90.\n4. **SLA proposés** : ambitieux mais tenable. Des SLA trop agressifs sont un red flag.\n5. **Prix** : en dernier. La TMA est un contrat de confiance, pas du low-cost.\n\n**Erreurs à éviter** :\n- Promettre des SLA P1 à 2h sans astreinte 24/7 → impossible\n- Nommer des profils seniors en soutien sans les inclure dans l'équipe réelle\n- Sous-estimer le volume de tickets lors du forfait → perte de marge\n\n**Différenciation** : 'Nous proposons un NPS trimestriel auprès de vos utilisateurs et un plan d'amélioration continue. Dans 3 ans, votre SI sera plus stable qu'aujourd'hui — pas seulement maintenu.'"
+      }
+    ]
+  }
+]

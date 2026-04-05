@@ -1,0 +1,39 @@
+[
+  {
+    "id": "data-cheatsheet",
+    "title": "Data & IA — L'essentiel pour pitcher",
+    "subtitle": "Comprendre et vendre les projets Data sans être Data Scientist",
+    "theme": "data",
+    "type": "cheatsheet",
+    "read_time_min": 8,
+    "key_numbers": [
+      "80% du temps d'un projet Data est passé à nettoyer les données",
+      "Seulement 24% des projets IA atteignent la production (Gartner 2024)",
+      "Valeur générée par l'IA prédictive en retail : +15% de marge sur la gestion des stocks",
+      "Le marché de l'IA en France : 3,9 milliards € en 2024, x3 d'ici 2027"
+    ],
+    "tags": ["data", "ia", "machine-learning", "lakehouse", "databricks", "dbt"],
+    "sections": [
+      {
+        "title": "L'architecture Data moderne — ce qu'il faut savoir dire",
+        "content": "**Data Warehouse** — Base de données analytique optimisée pour les requêtes sur des données structurées. Snowflake, BigQuery, Redshift, Azure Synapse. Pitch : 'Pour vos tableaux de bord et vos reportings financiers.'\n\n**Data Lake** — Stockage brut de toutes vos données (structurées, semi-structurées, non structurées). Pas cher (S3, ADLS). Problème : peut devenir un 'Data Swamp' sans gouvernance.\n\n**Lakehouse** — Architecture qui combine le meilleur des deux. Données brutes + requêtes analytiques performantes. Databricks Delta Lake, Apache Iceberg. C'est l'architecture de référence en 2025.\n\n**Data Mesh** — Organisation qui décentralise la propriété des données par domaine métier. Chaque équipe est 'data product owner'. Plutôt pour les grandes organisations.\n\n**Ton angle sales** : commencer par demander où en est le client. 'Vous avez des tableaux de bord ? Vos équipes accèdent aux données en libre-service ? Vous avez des modèles ML en production ?' La maturité data détermine le bon produit à pitcher."
+      },
+      {
+        "title": "Le pipeline data — expliquer simplement",
+        "content": "Un projet data suit toujours le même chemin :\n\n**Ingestion** → Collecter les données depuis les sources (ERP, CRM, IoT, API). Outils : Apache Kafka (temps réel), Airbyte, Fivetran (batch).\n\n**Stockage** → Persister les données brutes dans le Data Lake ou Lakehouse.\n\n**Transformation** → Nettoyer, enrichir, modéliser les données. `dbt (data build tool)` est devenu le standard. SQL + versioning Git.\n\n**Analyse / ML** → Construire des dashboards (Power BI, Tableau, Looker) ou entraîner des modèles ML (Python, scikit-learn, TensorFlow).\n\n**Activation** → Utiliser les insights en production : recommandations, alertes, décisions automatisées.\n\n**Analogie pour les clients non-techniques** : 'Imaginez votre SI comme une cuisine. L'ingestion c'est les livraisons de matières premières, la transformation c'est la préparation, et l'analyse c'est le plat servi. Aujourd'hui vous avez des ingrédients partout mais pas de cuisine organisée.'"
+      },
+      {
+        "title": "Les cas d'usage IA par secteur — argumenter business",
+        "content": "**Retail / Distribution** :\n- Prévision de la demande (demand forecasting) → -15 à -30% de ruptures de stock\n- Recommandation produit → +10-15% de panier moyen\n- Détection de fraude → -40% de pertes sur les retours frauduleux\n\n**Banque / Assurance** :\n- Score de crédit ML → meilleure prédiction du risque que les modèles statistiques classiques\n- Détection de fraude temps réel → délai de détection divisé par 10\n- Churn prediction → anticiper les clients sur le départ, intervenir avant\n\n**Industrie** :\n- Maintenance prédictive → -20% de pannes non planifiées, -15% de coûts maintenance\n- Computer vision → contrôle qualité automatisé sur chaîne de production\n- Optimisation énergétique → -8 à -12% de consommation\n\n**Santé** :\n- Aide au diagnostic (image médicale) → détection précoce, réduction des erreurs\n- Prédiction des réadmissions → gestion proactive des lits hospitaliers\n\n**Conseil sales** : toujours partir du cas d'usage business, jamais de la technologie. 'Vous perdez combien par an en ruptures de stock ?' avant de parler de LSTM ou de Prophet."
+      },
+      {
+        "title": "MLOps — pourquoi ça rate et comment le pitcher",
+        "content": "**Le problème** : 76% des modèles ML ne passent jamais en production (Gartner). Raisons : les data scientists entraînent en local, les ops ne savent pas déployer des modèles, il n'y a pas de monitoring post-déploiement.\n\n**MLOps** = DevOps appliqué au Machine Learning. Cycle complet : développement → versionning → entraînement automatisé → déploiement → monitoring.\n\n**Les outils à citer** :\n- `MLflow` : tracking des expériences, versionning des modèles. Open source, standard.\n- `Databricks ML` : plateforme MLOps intégrée dans le Lakehouse.\n- `Azure ML / AWS SageMaker / Vertex AI` : solutions cloud managées.\n- `Evidently AI` : monitoring de la dérive des données (data drift) en production.\n\n**Argument clé** : 'Le modèle ML qui fonctionne en démo mais pas en prod, ça coûte cher. MLOps c'est ce qui fait que votre investissement Data génère vraiment de la valeur — et continue d'en générer dans 6 mois quand vos données auront changé.'"
+      },
+      {
+        "title": "Data Governance — l'argument réglementaire",
+        "content": "**Pourquoi la gouvernance data est devenue un deal-maker** : RGPD, NIS2, réglementations sectorielles (DORA pour la finance) exigent de savoir où sont vos données, qui y accède, et de prouver leur qualité.\n\n**Les composants d'une gouvernance data** :\n- `Data Catalog` : inventaire de toutes les données, avec métadonnées et propriétaires. Alation, Collibra, DataHub (open source).\n- `Data Lineage` : traçabilité de l'origine et des transformations d'une donnée. 'D'où vient ce chiffre dans mon tableau de bord ?'\n- `Data Quality` : règles de validation automatisées (Great Expectations, dbt tests).\n- `Access Control` : qui peut voir quoi. RBAC (Role-Based Access Control) sur les données.\n- `Master Data Management (MDM)` : référentiel unique pour les données clés (clients, produits, fournisseurs).\n\n**Angle sales** : 'Si la CNIL vous contrôle demain, pouvez-vous prouver où sont stockées les données personnelles de vos clients, qui y a accès, et si elles sont exactes ? Sinon, la gouvernance data n'est plus optionnelle.'"
+      }
+    ]
+  }
+]

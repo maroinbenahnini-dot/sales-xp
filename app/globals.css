@@ -2,6 +2,19 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* ── iOS PWA safe areas ─────────────────────────────────────────────────────── */
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+}
+
+/* Prevents double-tap zoom on interactive elements */
+button, a, input, select {
+  touch-action: manipulation;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

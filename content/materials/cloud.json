@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cloud-cheatsheet",
+    "title": "Cloud — L'essentiel pour pitcher",
+    "subtitle": "Tout ce qu'un Sales ESN doit savoir pour parler Cloud sans se planter",
+    "theme": "cloud",
+    "type": "cheatsheet",
+    "read_time_min": 8,
+    "key_numbers": [
+      "70% des entreprises françaises ont une stratégie cloud en 2025",
+      "AWS : 31% de PDM mondial, Azure : 25%, GCP : 11%",
+      "Économie moyenne d'un projet cloud : 20-40% vs on-premise sur 3 ans",
+      "Migration moyenne : 18 à 36 mois pour un SI industriel"
+    ],
+    "tags": ["aws", "azure", "gcp", "migration", "infrastructure"],
+    "sections": [
+      {
+        "title": "Les 3 modèles de service à connaître par cœur",
+        "content": "**IaaS (Infrastructure as a Service)** — Tu loues des serveurs virtuels. Le client gère l'OS, le middleware, les apps. Exemples : AWS EC2, Azure VM. Ton angle sales : idéal pour les clients qui veulent garder le contrôle technique.\n\n**PaaS (Platform as a Service)** — Tu fournis la plateforme de développement. Le client gère uniquement son code et ses données. Exemples : AWS Elastic Beanstalk, Azure App Service. Ton angle sales : parfait pour accélérer le time-to-market des équipes dev.\n\n**SaaS (Software as a Service)** — L'application est clés en main. Exemples : Salesforce, Microsoft 365. Ton angle sales : ROI rapide, zéro maintenance infra pour le client."
+      },
+      {
+        "title": "Les 4 types de cloud",
+        "content": "**Cloud public** — AWS, Azure, GCP. Mutualisation des ressources, prix à l'usage, scalabilité infinie. Objection courante : 'Mes données partent aux USA.' Réponse : régions européennes, clauses contractuelles RGPD.\n\n**Cloud privé** — Infrastructure dédiée au client (on-premise ou hébergée). Contrôle total, souveraineté. Plus cher. Clients cibles : banques, hôpitaux, OIV.\n\n**Cloud hybride** — Mix public + privé. Les données sensibles restent on-premise, les charges variables passent dans le cloud public. Modèle le plus fréquent en France.\n\n**Multi-cloud** — Plusieurs providers simultanément. Évite le vendor lock-in. Complexité accrue."
+      },
+      {
+        "title": "Les 6 R de la migration (6R Strategy)",
+        "content": "Le framework AWS/Gartner que tous les DSI connaissent — tu dois le maîtriser.\n\n**Rehost (Lift & Shift)** — On déplace les VMs telles quelles. Rapide, peu risqué, peu de valeur ajoutée. À utiliser pour démarrer vite.\n\n**Replatform (Lift & Reshape)** — Légères optimisations pendant la migration (ex: passer d'une DB on-premise à RDS). Bon compromis vitesse/valeur.\n\n**Refactor / Re-architect** — Réécriture pour exploiter le cloud natif (microservices, serverless). Maximum de valeur, maximum de risque et de coût.\n\n**Repurchase** — Remplacer par un SaaS. Ex: abandonner un CRM custom pour Salesforce.\n\n**Retire** — Éteindre les applications obsolètes. Souvent 10-30% du parc applicatif.\n\n**Retain** — Garder on-premise pour l'instant. Applications non migrables (legacy, réglementaire)."
+      },
+      {
+        "title": "FinOps — L'argument qui tue avec les DAF",
+        "content": "**FinOps** = discipline qui aligne les équipes Tech, Finance et Business sur les coûts cloud.\n\nArmes commerciales :\n- `Reserved Instances` : engagement 1-3 ans = économie de 30-60% vs on-demand\n- `Savings Plans` : plus flexible que les RI, applicable à plusieurs services\n- `Spot Instances` : jusqu'à 90% moins cher pour les workloads interruptibles\n- `Right-sizing` : identifier les VMs surdimensionnées (souvent 40% du parc)\n\n**Chiffre à retenir** : les entreprises gaspillent en moyenne **32%** de leur budget cloud (rapport Flexera 2024). Ton angle : 'Nous vous aidons à arrêter de payer pour rien.'"
+      },
+      {
+        "title": "Les certifications AWS/Azure à mentionner",
+        "content": "Citer les certifications de tes consultants renforce la crédibilité technique. Voici ce que les clients DSI connaissent :\n\n**AWS** :\n- `AWS Solutions Architect Associate/Professional` — conception d'architecture\n- `AWS DevOps Engineer Professional` — CI/CD, infrastructure as code\n- `AWS Security Specialty` — sécurité et conformité\n\n**Azure** :\n- `AZ-900 Azure Fundamentals` — entrée de gamme\n- `AZ-305 Azure Solutions Architect` — niveau expert\n- `AZ-500 Azure Security Engineer` — cybersécurité Azure\n\n**Conseil sales** : si tu n'as pas les certifs, parle de la roadmap de certification de tes consultants. Ça montre l'engagement."
+      },
+      {
+        "title": "Les objections les plus fréquentes et comment y répondre",
+        "content": "**'Mes données vont partir aux USA'**\nRéponse : 'Les 3 grands providers ont des régions en France et en Europe. AWS Paris (eu-west-3), Azure France Central, GCP Paris. Les données restent sur le sol européen. Et nous intégrons les clauses SCCs dans le contrat.'\n\n**'Le cloud c'est plus cher que notre datacenter'**\nRéponse : 'Le TCO on-premise est souvent sous-estimé. Il faut inclure les coûts cachés : électricité, refroidissement, maintenance matériel, licences, personnel dédié. Sur 3 ans, le cloud est généralement 20-40% moins cher.'\n\n**'On n'a pas les compétences en interne'**\nRéponse : C'est exactement pourquoi nous sommes là. Notre offre inclut le transfert de compétences et la formation de vos équipes — avec certification AWS/Azure à la clé.'\n\n**'Et si le provider tombe en panne ?'**\nRéponse : 'AWS garantit 99.99% de SLA sur ses services managés. Et nous architecturons toujours en multi-AZ (zones de disponibilité) avec plan de reprise. Votre datacenter actuel, quel est son SLA ?'"
+      }
+    ]
+  },
+  {
+    "id": "cloud-glossary",
+    "title": "Cloud — Glossaire indispensable",
+    "subtitle": "50 termes cloud que tu entendras en rendez-vous client",
+    "theme": "cloud",
+    "type": "glossary",
+    "read_time_min": 6,
+    "tags": ["aws", "azure", "termes techniques", "vocabulaire"],
+    "sections": [
+      {
+        "title": "Infrastructure & Réseau",
+        "content": "**VPC (Virtual Private Cloud)** — Réseau privé isolé dans le cloud. C'est le 'datacenter virtuel' du client.\n\n**Subnet** — Sous-réseau dans un VPC. On segmente en subnets publics (internet) et privés (base de données).\n\n**Availability Zone (AZ)** — Datacenter physiquement séparé dans une région. Toujours déployer en multi-AZ pour la résilience.\n\n**Region** — Zone géographique contenant plusieurs AZ. Ex: eu-west-3 = Paris.\n\n**CDN (Content Delivery Network)** — Réseau de serveurs qui distribuent le contenu au plus proche de l'utilisateur. AWS CloudFront, Azure CDN.\n\n**Load Balancer** — Répartit le trafic entre plusieurs serveurs pour éviter la surcharge.\n\n**Auto Scaling** — Ajuste automatiquement le nombre de serveurs selon la charge. L'argument clé contre le surdimensionnement."
+      },
+      {
+        "title": "Compute & Conteneurs",
+        "content": "**VM / Instance** — Serveur virtuel. EC2 (AWS), Virtual Machine (Azure).\n\n**Serverless** — Code qui s'exécute sans gérer de serveur. AWS Lambda, Azure Functions. Facturation à l'exécution (pas à l'heure).\n\n**Container** — Environnement d'exécution léger et portable. Plus efficace qu'une VM.\n\n**Docker** — Technologie de conteneurisation. Standard de fait.\n\n**Kubernetes (K8s)** — Orchestrateur de conteneurs. Gère le déploiement, la montée en charge, la résilience.\n\n**EKS / AKS / GKE** — Kubernetes managé par AWS / Azure / Google. Tu n'as pas à gérer le cluster toi-même.\n\n**Microservices** — Architecture où l'application est découpée en petits services indépendants. Opposé au monolithe."
+      },
+      {
+        "title": "Stockage & Bases de données",
+        "content": "**Object Storage** — Stockage de fichiers non structurés (images, logs, backups). AWS S3, Azure Blob. Quasi illimité, très peu cher.\n\n**Block Storage** — Disque virtuel attaché à une VM. AWS EBS, Azure Managed Disk.\n\n**RDS (Relational Database Service)** — Base de données relationnelle managée (MySQL, PostgreSQL, Oracle). Pas de gestion de serveur.\n\n**NoSQL** — Bases de données non relationnelles. DynamoDB (AWS), Cosmos DB (Azure). Pour les données non structurées ou à très haute volumétrie.\n\n**Data Lake** — Stockage centralisé de données brutes en tout format. Base de toute architecture data moderne.\n\n**Data Warehouse** — Base analytique optimisée pour les requêtes complexes. Redshift (AWS), Synapse (Azure), BigQuery (GCP)."
+      },
+      {
+        "title": "Sécurité & Conformité",
+        "content": "**IAM (Identity and Access Management)** — Gestion des droits d'accès. Principe du moindre privilège : chaque ressource n'a accès qu'à ce dont elle a besoin.\n\n**MFA (Multi-Factor Authentication)** — Double authentification. Obligatoire pour les comptes admin cloud.\n\n**KMS (Key Management Service)** — Gestion des clés de chiffrement. Permet de chiffrer toutes les données au repos.\n\n**WAF (Web Application Firewall)** — Protège les applications web contre les attaques OWASP.\n\n**SOC 2 Type II** — Audit de sécurité cloud (confidentialité, disponibilité, intégrité). Certification exigée par les clients bancaires.\n\n**Shared Responsibility Model** — Le provider gère la sécurité DE l'infrastructure, le client gère la sécurité DANS l'infrastructure. Concept clé à expliquer aux DSI."
+      },
+      {
+        "title": "DevOps & Automatisation",
+        "content": "**IaC (Infrastructure as Code)** — L'infrastructure décrite dans du code (Terraform, CloudFormation). Reproductible, versionnable, auditable.\n\n**Terraform** — Outil IaC multi-cloud. Standard du marché.\n\n**CI/CD** — Intégration Continue / Déploiement Continu. Pipeline automatisé de build, test, déploiement.\n\n**GitOps** — L'état de l'infrastructure est décrit dans Git. Tout changement passe par une PR.\n\n**Monitoring / Observability** — CloudWatch (AWS), Azure Monitor. Métriques, logs, traces pour diagnostiquer les incidents.\n\n**SRE (Site Reliability Engineering)** — Pratique qui applique l'ingénierie logicielle à l'exploitation. Popularisé par Google."
+      }
+    ]
+  }
+]

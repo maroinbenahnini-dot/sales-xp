@@ -178,6 +178,27 @@ export interface RfpRunState {
   sections_completed: string[]
 }
 
+// ─── Sales Material ───────────────────────────────────────────────────────────
+
+export type MaterialType = 'cheatsheet' | 'glossary' | 'pitch' | 'objections' | 'methodo'
+
+export interface MaterialSection {
+  title: string
+  content: string // markdown-lite: supports **bold**, `code`, bullet lists with -
+}
+
+export interface SalesMaterial {
+  id: string
+  title: string
+  subtitle: string
+  theme: ScenarioTheme
+  type: MaterialType
+  read_time_min: number
+  sections: MaterialSection[]
+  key_numbers?: string[]   // chiffres clés à retenir
+  tags?: string[]
+}
+
 // ─── User ─────────────────────────────────────────────────────────────────────
 
 export interface UserProfile {
