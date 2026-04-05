@@ -9,17 +9,17 @@ export async function login(formData: FormData) {
   const parsed = loginSchema.safeParse(raw)
 
   if (!parsed.success) {
-    return { error: 'Données invalides.' }
+    return { error: 'Données invalides.', redirectTo: null }
   }
 
   const supabase = await createClient()
   const { error } = await supabase.auth.signInWithPassword(parsed.data)
 
   if (error) {
-    return { error: 'Email ou mot de passe incorrect.' }
+    return { error: 'Email ou mot de passe incorrect.', redirectTo: null }
   }
 
-  redirect('/dashboard')
+  return { error: null, redirectTo: '/dashboard' }
 }
 
 export async function register(formData: FormData) {
@@ -28,7 +28,7 @@ export async function register(formData: FormData) {
 
   if (!parsed.success) {
     const firstError = parsed.error.issues[0]?.message ?? 'Données invalides.'
-    return { error: firstError }
+    return { error: firstError, redirectTo: null }
   }
 
   const supabase = await createClient()
@@ -43,12 +43,12 @@ export async function register(formData: FormData) {
 
   if (error) {
     if (error.code === 'user_already_exists') {
-      return { error: 'Un compte existe déjà avec cet email.' }
+      return { error: 'Un compte existe déjà avec cet email.', redirectTo: null }
     }
-    return { error: 'Erreur lors de la création du compte.' }
+    return { error: 'Erreur lors de la création du compte.', redirectTo: null }
   }
 
-  redirect('/dashboard')
+  return { error: null, redirectTo: '/dashboard' }
 }
 
 export async function logout() {
