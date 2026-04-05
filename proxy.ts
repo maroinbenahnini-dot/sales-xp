@@ -29,15 +29,15 @@ export async function proxy(request: NextRequest) {
     }
   )
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { session } } = await supabase.auth.getSession()
   const pathname = request.nextUrl.pathname
   const isPublicRoute = PUBLIC_ROUTES.some(r => pathname.startsWith(r))
 
-  if (!user && !isPublicRoute) {
+  if (!session && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  if (user && isPublicRoute) {
+  if (session && isPublicRoute) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
