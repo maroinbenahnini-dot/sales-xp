@@ -1,0 +1,329 @@
+{
+  "id": "ACT3-S2",
+  "title": "L'Alliance Stratégique",
+  "act": 3,
+  "theme": "infra",
+  "difficulty": "hard",
+  "duration_weeks": 14,
+  "actions_per_week": 4,
+  "context": {
+    "company": "EnergyGrid SA",
+    "industry": "Énergie & Infrastructures critiques",
+    "deal_size": "1,5M€",
+    "brief": "EnergyGrid SA opère 3 400 km de réseau électrique haute tension — c'est un Opérateur d'Importance Vitale (OIV) sous directive NIS2 et supervision directe de l'ANSSI. Son réseau de pilotage industriel (SCADA, OT) tourne sur une infrastructure vieillissante de 15 ans. Un incident chez un concurrent européen a mis le secteur en alerte maximale. EnergyGrid veut une refonte complète : modernisation de l'infrastructure, segmentation IT/OT, résilience et souveraineté numérique. C'est le plus gros deal de ta carrière. Et le plus dangereux : si tu gagnes, tu deviens un partenaire stratégique national. Si tu perds, c'est un concurrent qui pren la place pour 10 ans."
+  },
+  "stakeholders": [
+    {
+      "id": "bertrand_k",
+      "name": "Bertrand Kauffmann",
+      "role": "DSI Groupe",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Moderniser l'infrastructure sans jamais interrompre le réseau électrique",
+      "hidden_fear": "Un incident pendant la migration provoquerait une coupure nationale — et la fin de sa carrière",
+      "preferred_channel": "meeting",
+      "initial_relation": 20
+    },
+    {
+      "id": "sylvie_a",
+      "name": "Sylvie Arnaud",
+      "role": "DG Adjointe",
+      "influence": 5,
+      "type": "decision_maker",
+      "visible_motivation": "Positionner EnergyGrid comme leader européen de la résilience des infrastructures critiques",
+      "hidden_fear": "Un deal mal negocié qui lierait EnergyGrid à un prestataire pendant 10 ans sans sortie possible",
+      "preferred_channel": "lunch",
+      "initial_relation": 15
+    },
+    {
+      "id": "colonel_r",
+      "name": "Colonel Renard",
+      "role": "Directeur Sécurité OIV / RSSI",
+      "influence": 5,
+      "type": "blocker",
+      "visible_motivation": "Garantir la souveraineté et la résilience de l'infrastructure critique nationale",
+      "hidden_fear": "Que des composants étrangers dans l'infrastructure créent une backdoor exploitable par un État hostile",
+      "preferred_channel": "meeting",
+      "initial_relation": 5
+    },
+    {
+      "id": "pascal_v",
+      "name": "Pascal Virot",
+      "role": "Directeur des Opérations Réseau",
+      "influence": 4,
+      "type": "blocker",
+      "visible_motivation": "Que la migration ne cause aucune interruption même de 30 secondes",
+      "hidden_fear": "Ses équipes terrain de 200 ingénieurs ne savent pas travailler avec des prestataires IT — friction culturelle forte",
+      "preferred_channel": "meeting",
+      "initial_relation": 10
+    },
+    {
+      "id": "helene_d",
+      "name": "Hélène Dupuis",
+      "role": "Directrice Juridique & Conformité",
+      "influence": 3,
+      "type": "influencer",
+      "visible_motivation": "Sécuriser contractuellement les engagements NIS2, LPM et les clauses de sortie",
+      "hidden_fear": "Un contrat sans pénalités suffisantes expose EnergyGrid à des risques légaux incontrôlables",
+      "preferred_channel": "email",
+      "initial_relation": 25
+    },
+    {
+      "id": "jean_luc_f",
+      "name": "Jean-Luc Fabre",
+      "role": "Responsable Infrastructure OT/SCADA",
+      "influence": 3,
+      "type": "champion",
+      "visible_motivation": "Moderniser les systèmes SCADA sans perdre 15 ans de spécificités métier",
+      "hidden_fear": "Que les équipes IT ne comprennent pas les contraintes temps-réel des systèmes industriels",
+      "preferred_channel": "meeting",
+      "initial_relation": 35
+    },
+    {
+      "id": "marc_b",
+      "name": "Marc Bouchard",
+      "role": "CFO Groupe",
+      "influence": 3,
+      "type": "influencer",
+      "visible_motivation": "Optimiser le CAPEX/OPEX sur un projet structurant de 10 ans",
+      "hidden_fear": "Les dépassements budgétaires sur les projets OT — il en a vu trois en 5 ans",
+      "preferred_channel": "email",
+      "initial_relation": 20
+    },
+    {
+      "id": "aurelien_s",
+      "name": "Aurélien Sanz",
+      "role": "Architecte Systèmes Industriels",
+      "influence": 2,
+      "type": "champion",
+      "visible_motivation": "Construire une architecture de référence qui sera son œuvre technique",
+      "hidden_fear": "Que l'architecture soit imposée par le prestataire sans prendre en compte les 15 ans de spécificités EnergyGrid",
+      "preferred_channel": "email",
+      "initial_relation": 40
+    }
+  ],
+  "actions": {
+    "email": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "email_souverainete",
+          "label": "Envoyer une note sur la chaîne d'approvisionnement : composants souverains et certifiés ANSSI",
+          "effects": { "colonel_r": 18, "bertrand_k": 10, "helene_d": 8 },
+          "feedback": {
+            "result": "Le Colonel Renard a transmis ta note à son contact ANSSI. 'Enfin un prestataire qui comprend les enjeux de souveraineté.'",
+            "explanation": "La souveraineté numérique est un prérequis absolu pour les OIV. Référencer les certifications ANSSI (CSPN, qualification), les labels SecNumCloud et les partenaires souverains est non-négociable dans ce contexte.",
+            "optimal": "Liste les équipements Cisco/Juniper vs alternatives souveraines (Stormshield, Atempo, Wallix) — et propose de mixte selon les criticités. L'ANSSI n'impose pas du 100% souverain, mais valorise l'effort.",
+            "skill": "regulatory_framing"
+          }
+        },
+        {
+          "id": "email_ot_architecture",
+          "label": "Envoyer un livre blanc sur la segmentation IT/OT et la protection des systèmes SCADA",
+          "effects": { "jean_luc_f": 20, "pascal_v": 12, "colonel_r": 10, "aurelien_s": 15 },
+          "feedback": {
+            "result": "Jean-Luc Fabre a relu le livre blanc trois fois. Il t'a appelé pour discuter des zones Purdue Level 0-2.",
+            "explanation": "Les équipes OT/SCADA vivent dans un monde séparé de l'IT classique (temps-réel, protocoles industriels Modbus/DNP3, tolérance zéro aux interruptions). Un livre blanc qui parle leur langue (Purdue Model, IEC 62443, zones de sécurité) crée immédiatement une connexion.",
+            "optimal": "Illustre avec un schéma Purdue sur 5 niveaux appliqué à un réseau électrique. Une image vaut 1000 mots pour des ingénieurs OT.",
+            "skill": "technical_credibility"
+          }
+        },
+        {
+          "id": "email_nis2_obligations",
+          "label": "Envoyer une synthèse des obligations NIS2 et LPM pour les OIV du secteur énergie",
+          "effects": { "helene_d": 18, "sylvie_a": 10, "bertrand_k": 8 },
+          "feedback": {
+            "result": "Hélène Dupuis a utilisé ta synthèse pour son rapport au Conseil d'Administration.",
+            "explanation": "La Directrice Juridique cherche des preuves documentées pour couvrir la responsabilité de l'entreprise. Lui fournir une synthèse réglementaire actionnable la transforme en alliée puissante.",
+            "optimal": "Ajoute un tableau des sanctions NIS2 et LPM avec les montants — la direction prend toujours les obligations réglementaires plus au sérieux quand les pénalités sont chiffrées.",
+            "skill": "regulatory_framing"
+          }
+        }
+      ]
+    },
+    "meeting_request": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "meeting_colonel",
+          "label": "Briefing sécurité avec le Colonel Renard : threat modeling spécifique OIV énergie",
+          "effects": { "colonel_r": 28, "bertrand_k": 12, "jean_luc_f": 8 },
+          "feedback": {
+            "result": "Le Colonel a partagé un scénario d'attaque classifié pour voir si tu pouvais y répondre. Tu l'as fait. Il t'a serré la main : 'Vous êtes le premier prestataire à qui je confie ça.'",
+            "explanation": "Un directeur sécurité OIV teste les prestataires sur leur capacité à penser comme un adversaire étatique. Répondre à un scénario d'attaque crédible (pas un scénario générique) prouve que tu as l'expérience des infrastructures critiques.",
+            "optimal": "Prépare-toi sur les groupes APT ciblant les infrastructures énergétiques (Sandworm, APT28) et les vecteurs d'attaque OT réels (Industroyer, Triton). C'est la crédibilité technique ultime.",
+            "skill": "technical_credibility"
+          }
+        },
+        {
+          "id": "meeting_pascal_operations",
+          "label": "Immersion terrain 2 jours avec Pascal Virot et ses équipes sur le réseau",
+          "effects": { "pascal_v": 28, "jean_luc_f": 15, "aurelien_s": 12, "bertrand_k": 8 },
+          "feedback": {
+            "result": "Après 2 jours sur le terrain, Pascal Virot t'a dit : 'Vous êtes les premiers à avoir mis les pieds sur un pylône. Maintenant je vous fais confiance.'",
+            "explanation": "L'immersion terrain est la démonstration d'empathie la plus forte dans les environnements industriels. Les équipes OT valorisent immensément les prestataires qui comprennent leurs réalités physiques — pas seulement les logiciels.",
+            "optimal": "Publie un retour d'expérience interne après l'immersion ('Ce que nous avons appris sur le réseau EnergyGrid') et partage-le avec Bertrand et Sylvie. Ça transforme l'immersion en preuve de sérieux.",
+            "skill": "discovery"
+          }
+        },
+        {
+          "id": "meeting_sylvie_strategic",
+          "label": "Déjeuner stratégique avec Sylvie Arnaud : vision 10 ans et partenariat long terme",
+          "effects": { "sylvie_a": 22, "bertrand_k": 10, "marc_b": 8 },
+          "feedback": {
+            "result": "Sylvie t'a confié que le vrai enjeu est de devenir le partenaire stratégique national pour les 10 prochaines années. Elle teste si tu penses au même horizon.",
+            "explanation": "Une DG Adjointe sur un deal à 1,5M€ ne pense pas à la migration — elle pense au partenariat stratégique. Parler au même horizon temporel qu'elle (10 ans) change la nature de la relation commerciale.",
+            "optimal": "Propose un 'Accord Cadre de Partenariat Stratégique' plutôt qu'un simple contrat de prestation. Ça ancre la relation dans une durée et une profondeur différentes.",
+            "skill": "executive_engagement"
+          }
+        }
+      ]
+    },
+    "lunch": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "lunch_aurelie_architecture",
+          "label": "Co-design de l'architecture cible avec Aurélien Sanz sur 3 sessions",
+          "effects": { "aurelien_s": 25, "jean_luc_f": 15, "pascal_v": 10, "bertrand_k": 8 },
+          "feedback": {
+            "result": "Aurélien a nommé l'architecture 'EnergyGrid Resilient Infrastructure Framework' — son œuvre. Il en est devenu le défenseur le plus ardent en interne.",
+            "explanation": "Co-concevoir l'architecture avec l'architecte interne transforme le prestataire en partenaire et donne à l'expert interne la paternité intellectuelle. C'est une des formes de co-construction les plus puissantes.",
+            "optimal": "Laisse l'architecte interne présenter l'architecture en CODIR — toi tu es en second plan. Son appropriation vaut plus que ta visibilité commerciale.",
+            "skill": "co_construction"
+          }
+        },
+        {
+          "id": "lunch_helene_contracts",
+          "label": "Session de travail avec Hélène sur les clauses contractuelles NIS2 et réversibilité",
+          "effects": { "helene_d": 22, "sylvie_a": 12, "marc_b": 8 },
+          "feedback": {
+            "result": "Hélène a validé ton modèle contractuel. 'C'est la première fois qu'un prestataire propose des pénalités aussi strictes sur lui-même — ça montre votre confiance.'",
+            "explanation": "Proposer des pénalités contractuelles sévères sur soi-même est paradoxalement un puissant signal de confiance. Cela dit : 'Nous sommes sûrs de livrer, donc nous acceptons les conséquences si ce n'est pas le cas.'",
+            "optimal": "Inclure une clause de réversibilité détaillée (transfert de compétences, documentation, transition) — c'est le principal frein à la signature sur les deals long terme.",
+            "skill": "deal_structuring"
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "cost": 2,
+      "choices": [
+        {
+          "id": "proposal_sovereignty_first",
+          "label": "Proposer une architecture 100% souveraine avec un écosystème de partenaires certifiés ANSSI",
+          "effects": { "colonel_r": 25, "sylvie_a": 18, "helene_d": 12, "bertrand_k": 15 },
+          "feedback": {
+            "result": "Le Colonel Renard a présenté ta proposition comme 'la seule offre crédible' au Comité de Sécurité Nationale interne d'EnergyGrid.",
+            "explanation": "Pour un OIV, la souveraineté n'est pas un avantage concurrentiel — c'est un filtre d'entrée. Construire une architecture autour d'un écosystème souverain (Stormshield, Thales, Orange CyberDefense) ouvre des portes que tes concurrents américains ne peuvent pas franchir.",
+            "optimal": "Co-signer ta proposition avec un partenaire souverain reconnu (Thales, Airbus CyberSecurity). Leur logo est plus puissant que le tien dans ce contexte.",
+            "skill": "solution_design"
+          }
+        },
+        {
+          "id": "proposal_resilience_ot",
+          "label": "Proposer une architecture de résilience OT avec basculement en mode dégradé garanti < 30 secondes",
+          "effects": { "pascal_v": 25, "jean_luc_f": 20, "bertrand_k": 15 },
+          "feedback": {
+            "result": "Pascal Virot a sorti son chronomètre pendant la démo. Tu as tenu les 30 secondes. Il a applaudi.",
+            "explanation": "Les engagements chiffrés et vérifiables en temps réel sont la devise des opérationnels. Un SLA de basculement < 30 secondes testé en démo live crée une confiance impossible à construire sur papier.",
+            "optimal": "Propose un test de basculement en conditions réelles sur une portion du réseau non-critique avant la signature. Le client co-conçoit le test — il ne peut pas contester les résultats.",
+            "skill": "demonstration"
+          }
+        },
+        {
+          "id": "proposal_partnership_10y",
+          "label": "Proposer un Accord Cadre 10 ans avec gouvernance partagée et comité de pilotage mixte",
+          "effects": { "sylvie_a": 22, "bertrand_k": 12, "marc_b": 10, "helene_d": 8 },
+          "feedback": {
+            "result": "Sylvie Arnaud a convoqué un CODIR extraordinaire. 'C'est la première fois qu'un prestataire nous propose de gouverner ensemble.'",
+            "explanation": "Un accord cadre avec gouvernance partagée transforme la relation fournisseur/client en partenariat co-responsable. C'est la seule façon de gagner la confiance pour un contrat de 10 ans.",
+            "optimal": "Inclure un mécanisme de revue annuelle avec critères de sortie clairs — paradoxalement, les clauses de sortie facilitent les engagements longs. Le client se sent libre, donc il s'engage.",
+            "skill": "deal_structuring"
+          }
+        }
+      ]
+    },
+    "reference_visit": {
+      "cost": 3,
+      "choices": [
+        {
+          "id": "ref_oiv_water",
+          "label": "Organiser une visite chez un OIV eau que tu as équipé avec une architecture similaire",
+          "effects": { "colonel_r": 22, "pascal_v": 18, "bertrand_k": 12 },
+          "feedback": {
+            "result": "La visite a convaincu Pascal Virot. Les deux directeurs des opérations ont échangé pendant 3h. 'Si ça marche pour l'eau sans jamais couper le réseau, ça marchera pour nous.'",
+            "explanation": "La preuve par un OIV d'un secteur adjacent (eau, transport) est souvent plus convaincante qu'une référence dans le même secteur. Elle évite l'objection 'mais votre client n'a pas nos contraintes spécifiques'.",
+            "optimal": "Choisis une référence OIV avec des contraintes encore plus strictes qu'EnergyGrid — cela positionne ton offre comme sur-dimensionnée pour les besoins actuels, ce qui rassure.",
+            "skill": "social_proof"
+          }
+        },
+        {
+          "id": "ref_anssi_endorsement",
+          "label": "Obtenir une lettre d'endorsement de l'ANSSI sur ta méthodologie OIV",
+          "effects": { "colonel_r": 30, "sylvie_a": 20, "helene_d": 15 },
+          "feedback": {
+            "result": "La lettre ANSSI a clôturé tous les débats sur la souveraineté. Le Colonel Renard a dit : 'Si l'ANSSI les endosse, il n'y a plus rien à discuter.'",
+            "explanation": "Une endorsement de l'ANSSI est le Graal de la crédibilité souveraine. Elle n'est pas facile à obtenir mais elle neutralise instantanément tous les arguments de tes concurrents sur la conformité.",
+            "optimal": "Investis dans la relation ANSSI en dehors des cycles commerciaux — participe aux groupes de travail, contribue aux référentiels. Le dividend est énorme sur les deals OIV.",
+            "skill": "social_proof"
+          }
+        }
+      ]
+    },
+    "event_response": {
+      "cost": 1,
+      "choices": [
+        {
+          "id": "event_crisis_simulation",
+          "label": "Proposer un exercice de crise national (simulation cyberattaque sur réseau électrique)",
+          "effects": { "colonel_r": 25, "pascal_v": 20, "sylvie_a": 18, "bertrand_k": 15 },
+          "feedback": {
+            "result": "L'exercice a impliqué l'ANSSI, l'OFAC et deux ministères. EnergyGrid est sorti renforcé. Sylvie Arnaud t'a dit : 'Vous avez positionné EnergyGrid comme référence nationale. C'est ce que nous voulions.'",
+            "explanation": "Un exercice de crise national positionne EnergyGrid comme leader sectoriel et toi comme partenaire stratégique de l'État. C'est au-delà du commercial — c'est du capital de confiance institutionnel.",
+            "optimal": "Implique toujours les autorités de tutelle (ANSSI, ministères) dans les exercices de crise OIV. Leur présence légitime le projet et crée des relations qui durent au-delà du deal.",
+            "skill": "facilitation"
+          }
+        },
+        {
+          "id": "event_technical_proof",
+          "label": "Organiser un proof of concept sur une sous-station test pendant 72h",
+          "effects": { "pascal_v": 22, "jean_luc_f": 18, "aurelien_s": 15, "bertrand_k": 12 },
+          "feedback": {
+            "result": "Le POC s'est déroulé sans interruption. Pascal Virot a noté que ses équipes terrain ont adopté naturellement les nouveaux outils. 'C'est la première fois que mes gars ne résistent pas au changement.'",
+            "explanation": "Un POC en conditions réelles (même limitées) élimine le risque perçu sur le plus gros deal de ta carrière. La réussite terrain crée une inertie positive impossible à renverser ensuite.",
+            "optimal": "Structure le POC avec des critères de succès co-définis avec Pascal. S'il valide lui-même les résultats, il devient le sponsor naturel du déploiement complet.",
+            "skill": "demonstration"
+          }
+        }
+      ]
+    }
+  },
+  "endings": {
+    "won": {
+      "condition": "colonel_r.relation >= 60 AND pascal_v.relation >= 55 AND sylvie_a.relation >= 60",
+      "narrative": "Sylvie Arnaud t'a reçu dans la salle du Conseil d'Administration pour la signature. À côté du contrat à 1,5M€, elle t'a remis un badge d'accès permanent aux installations d'EnergyGrid : 'Vous faites partie de la famille maintenant.' Le Colonel Renard, debout dans un coin, a hoché la tête. C'est la seule approbation que tu demandais. Tu viens de décrocher le plus gros deal de ta carrière — et tu es désormais partenaire stratégique d'une infrastructure critique nationale.",
+      "xp": 1500,
+      "badges": ["infra_master", "ten_wins", "level_5"],
+      "carry_over": {
+        "EnergyGrid_partner": "strategic",
+        "oiv_reputation": "+50",
+        "national_reference": "true"
+      }
+    },
+    "lost": {
+      "condition": "colonel_r.relation < 40 OR pascal_v.relation < 35 OR sylvie_a.relation < 40",
+      "narrative": "EnergyGrid a sélectionné Thales pour leur crédibilité souveraine historique. Bertrand Kauffmann t'a expliqué : 'Votre approche était excellente, mais dans notre contexte OIV, nous avons besoin d'un partenaire dont la légitimité est incontestable vis-à-vis de l'État.' La souveraineté ne se prouve pas — elle se construit sur des années.",
+      "xp": 300,
+      "badges": [],
+      "carry_over": {}
+    },
+    "pending": {
+      "condition": "colonel_r.relation >= 45 AND sylvie_a.relation >= 45",
+      "narrative": "EnergyGrid est en dernière ligne droite entre toi et Thales. Le Colonel Renard a demandé une ultime vérification ANSSI de ton dossier technique. Sylvie Arnaud t'a soufflé : 'Tenez bon.'",
+      "xp": 500,
+      "badges": [],
+      "carry_over": {}
+    }
+  }
+}
