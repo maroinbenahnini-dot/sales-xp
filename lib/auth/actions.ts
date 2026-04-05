@@ -33,9 +33,12 @@ export async function register(formData: FormData) {
 
   const supabase = await createClient()
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
+    options: {
+      data: { username: parsed.data.username },
+    },
   })
 
   if (error) {
@@ -43,14 +46,6 @@ export async function register(formData: FormData) {
       return { error: 'Un compte existe déjà avec cet email.' }
     }
     return { error: 'Erreur lors de la création du compte.' }
-  }
-
-  if (data.user) {
-    await supabase.from('users').insert({
-      id: data.user.id,
-      email: parsed.data.email,
-      username: parsed.data.username,
-    })
   }
 
   redirect('/dashboard')
