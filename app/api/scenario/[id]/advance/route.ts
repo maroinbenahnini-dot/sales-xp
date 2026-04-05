@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { getScenario } from '@/lib/game/scenarios'
 import { computeScore, resolveEnding } from '@/lib/game/scenario-engine'
+import { resolveWeeklyEvent } from '@/lib/game/events'
 import type { ScenarioRunState } from '@/types/game'
 
 interface Params { params: Promise<{ id: string }> }
@@ -62,5 +63,9 @@ export async function POST(req: NextRequest, { params }: Params) {
 
   await supabase.from('scenario_runs').update({ current_week: nextWeek }).eq('id', run_id)
 
-  return NextResponse.json({ completed: false, current_week: nextWeek })
+  // Pick a weekly event (deterministic, 35% chance)
+  const triggeredIds: string[] = (state.events_triggered ?? [])
+  const event = resolveWeeklyEvent(run_id, nextWeek, triggeredIds)
+
+  return NextResponse.json({ completed: false, current_week: nextWeek, event: event ?? null })
 }

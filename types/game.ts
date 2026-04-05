@@ -96,6 +96,26 @@ export interface ScenarioRunState {
   carry_over_applied: Record<string, string>
 }
 
+// ─── Weekly Events ────────────────────────────────────────────────────────────
+
+export type WeeklyEventType = 'opportunity' | 'threat' | 'neutral'
+
+export interface WeeklyEventChoice {
+  id: string
+  label: string
+  effects: Record<string, number> // stakeholder_id → relation delta
+  action_bonus?: number            // extra actions this week
+  feedback: string
+}
+
+export interface WeeklyEvent {
+  id: string
+  title: string
+  description: string
+  type: WeeklyEventType
+  choices: WeeklyEventChoice[]
+}
+
 // ─── RFP ──────────────────────────────────────────────────────────────────────
 
 export interface RfpRequirement {

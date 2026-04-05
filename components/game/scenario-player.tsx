@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation'
 import { AccountMap } from './account-map'
 import { ActionPanel } from './action-panel'
 import { WeekHeader } from './week-header'
-import type { Scenario, ScenarioRunState } from '@/types/game'
+import { WeekEventModal } from './week-event-modal'
+import type { Scenario, ScenarioRunState, WeeklyEvent } from '@/types/game'
 
 interface Props {
   scenario: Scenario
@@ -23,6 +24,7 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
   const [ending, setEnding] = useState<{
     score: number; narrative: string; xp_earned: number; result: string
   } | null>(null)
+  const [pendingEvent, setPendingEvent] = useState<WeeklyEvent | null>(null)
 
   function handleActionDone(newState: ScenarioRunState, cost: number) {
     setGameState(newState)
@@ -30,7 +32,8 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
   }
 
   function handleWeekAdvanced(result: {
-    completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number; current_week?: number
+    completed: boolean; score?: number; ending?: string; narrative?: string
+    xp_earned?: number; current_week?: number; event?: WeeklyEvent | null
   }) {
     if (result.completed && result.score !== undefined) {
       setEnding({
@@ -42,7 +45,14 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
     } else if (result.current_week) {
       setCurrentWeek(result.current_week)
       setActionsRemaining(scenario.actions_per_week)
+      if (result.event) setPendingEvent(result.event)
     }
+  }
+
+  function handleEventResolved(newState: ScenarioRunState, actionBonus: number) {
+    setGameState(newState)
+    if (actionBonus > 0) setActionsRemaining(prev => prev + actionBonus)
+    setPendingEvent(null)
   }
 
   return (
@@ -94,6 +104,18 @@ export function ScenarioPlayer({ scenario, runId, initialState, initialWeek }: P
           onActionDone={handleActionDone}
         />
       </section>
+
+      {/* Weekly event modal */}
+      <AnimatePresence>
+        {pendingEvent && (
+          <WeekEventModal
+            event={pendingEvent}
+            scenarioId={scenario.id}
+            runId={runId}
+            onResolved={handleEventResolved}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Ending modal */}
       <AnimatePresence>

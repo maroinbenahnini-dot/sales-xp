@@ -5,6 +5,8 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 
+import type { WeeklyEvent } from '@/types/game'
+
 interface Props {
   scenarioId: string
   runId: string
@@ -12,7 +14,8 @@ interface Props {
   currentWeek: number
   actionsRemaining: number
   onWeekAdvanced: (result: {
-    completed: boolean; score?: number; ending?: string; narrative?: string; xp_earned?: number; current_week?: number
+    completed: boolean; score?: number; ending?: string; narrative?: string
+    xp_earned?: number; current_week?: number; event?: WeeklyEvent | null
   }) => void
 }
 
