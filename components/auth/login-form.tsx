@@ -1,7 +1,6 @@
 'use client'
 
 import { useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -14,7 +13,6 @@ import { loginSchema, type LoginInput } from '@/lib/auth/schemas'
 
 export function LoginForm() {
   const [isPending, startTransition] = useTransition()
-  const router = useRouter()
 
   const {
     register,
@@ -32,7 +30,7 @@ export function LoginForm() {
       if (result?.error) {
         toast.error(result.error)
       } else if (result?.redirectTo) {
-        router.push(result.redirectTo)
+        window.location.href = result.redirectTo
       }
     })
   }
