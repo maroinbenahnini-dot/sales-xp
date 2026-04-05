@@ -1,0 +1,44 @@
+{
+  "name": "SalesXP",
+  "short_name": "SalesXP",
+  "description": "Jeu de formation commerciale ESN — maîtrise l'art du deal",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "categories": ["games", "education", "productivity"],
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Bibliothèque",
+      "url": "/library",
+      "description": "Voir tous les scénarios disponibles"
+    },
+    {
+      "name": "Tableau de bord",
+      "url": "/dashboard",
+      "description": "Mon niveau et mes stats"
+    }
+  ]
+}
