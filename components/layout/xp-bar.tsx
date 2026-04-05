@@ -42,9 +42,12 @@ export function XpBar() {
             )}
           </div>
 
-          <span className="text-xs text-muted-foreground shrink-0 hidden sm:block">
+          <Link
+            href="/profile"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0 hidden sm:block"
+          >
             {user.username}
-          </span>
+          </Link>
         </div>
 
         <LogoutButton />
