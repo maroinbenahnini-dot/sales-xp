@@ -23,11 +23,11 @@ export function XpBar() {
           SalesXP
         </Link>
 
-        <nav className="flex gap-4 text-sm text-muted-foreground shrink-0">
+        <nav className="hidden sm:flex gap-4 text-sm text-muted-foreground shrink-0">
           <Link href="/library" className="hover:text-foreground transition-colors">
             Bibliothèque
           </Link>
-          <Link href="/materials" className="hover:text-foreground transition-colors hidden sm:block">
+          <Link href="/materials" className="hover:text-foreground transition-colors">
             Sales Material
           </Link>
         </nav>
@@ -48,7 +48,7 @@ export function XpBar() {
 
           <Link
             href="/profile"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0 hidden sm:block"
+            className="hidden sm:block text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0"
           >
             {user.username}
           </Link>

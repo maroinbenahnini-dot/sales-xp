@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { XpBar } from '@/components/layout/xp-bar'
+import { BottomNav } from '@/components/layout/bottom-nav'
 import { UserProvider } from '@/components/providers/user-provider'
 import { LevelUpOverlay } from '@/components/game/level-up-overlay'
 import type { UserProfile } from '@/types/game'
@@ -22,8 +23,9 @@ export default async function GameLayout({ children }: { children: React.ReactNo
     <UserProvider initialUser={profile}>
       <div className="min-h-screen bg-background flex flex-col">
         <XpBar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-16 sm:pb-0">{children}</main>
         <LevelUpOverlay />
+        <BottomNav />
       </div>
     </UserProvider>
   )
