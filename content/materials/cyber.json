@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cyber-cheatsheet",
+    "title": "Cyber — L'essentiel pour un Sales",
+    "subtitle": "Parler sécu sans te faire démonter par un RSSI en 5 minutes",
+    "theme": "cyber",
+    "type": "cheatsheet",
+    "read_time_min": 9,
+    "key_numbers": [
+      "4,5 millions d'euros : coût moyen d'une cyberattaque en France (2024)",
+      "1 entreprise sur 2 a subi une cyberattaque significative en 2023",
+      "DORA : applicable depuis janvier 2025 pour toutes les entités financières",
+      "NIS2 : 18 secteurs critiques concernés, amendes jusqu'à 10M€ ou 2% du CA mondial"
+    ],
+    "tags": ["rssi", "dora", "nis2", "pentest", "soc", "zero-trust"],
+    "sections": [
+      {
+        "title": "Le paysage des menaces — ce que tes clients craignent",
+        "content": "**Ransomware** — Chiffrement des données avec demande de rançon. Vecteur n°1 en France. Cibles : hôpitaux, collectivités, PME industrielles. Message clé : 'Un ransomware coûte en moyenne 4,5M€ entre rançon, perte d'activité et reconstruction.'\n\n**Phishing / Spear Phishing** — Email frauduleux ciblé. 90% des incidents commencent par un email. Solution : sensibilisation + MFA + filtrage email.\n\n**Supply Chain Attack** — Attaque via un prestataire ou une dépendance logicielle. SolarWinds (2020) a compromis 18 000 organisations via une mise à jour.\n\n**APT (Advanced Persistent Threat)** — Groupes soutenus par des États. Sandworm (Russie), APT28, APT41 (Chine). Cibles : OIV, défense, énergie.\n\n**Insider Threat** — Menace interne. Employé malveillant ou négligent. 30% des incidents selon CISA."
+      },
+      {
+        "title": "Les cadres réglementaires à connaître absolument",
+        "content": "**RGPD (Règlement Général Protection des Données)** — Applicable depuis 2018. Amendes jusqu'à 4% du CA mondial. Data Protection by Design. Notification CNIL sous 72h en cas de breach.\n\n**NIS2 (Network and Information Security 2)** — Directive européenne transposée en France en 2024. Concerne 18 secteurs critiques (énergie, transport, santé, finance…). Obligations : gestion des risques, supply chain, notification incidents, tests réguliers.\n\n**DORA (Digital Operational Resilience Act)** — Applicable depuis **janvier 2025**. Spécifique aux entités financières (banques, assurances, prestataires IT financiers). Exige : ICT Risk Management, tests de résilience (TLPT), reporting incidents, gestion des prestataires tiers.\n\n**LPM (Loi de Programmation Militaire)** — Française. Concerne les OIV (Opérateurs d'Importance Vitale). Supervision par l'ANSSI. Obligations de détection, qualification des prestataires.\n\n**HDS (Hébergeur Données de Santé)** — Certification obligatoire pour héberger des données de santé en France. Plus stricte que le simple RGPD."
+      },
+      {
+        "title": "Le portefeuille de services cyber à pitcher",
+        "content": "**Audit & Conseil**\n- `Pentest (test d'intrusion)` : simulation d'attaque contrôlée. Black box (sans info), White box (avec accès), Grey box.\n- `Audit ISO 27001` : évaluation du SMSI (Système de Management de la Sécurité de l'Information)\n- `Red Team / Blue Team` : simulation avancée d'attaque (Red) face à la défense en place (Blue)\n\n**Intégration technique**\n- `SIEM (Security Information and Event Management)` : corrélation des logs pour détecter les incidents. Splunk, IBM QRadar, Microsoft Sentinel.\n- `EDR (Endpoint Detection & Response)` : protection avancée des postes de travail. CrowdStrike, SentinelOne, Microsoft Defender.\n- `PAM (Privileged Access Management)` : gestion des comptes à privilèges. CyberArk, Wallix. Argent facile dans les grandes entreprises.\n- `CASB (Cloud Access Security Broker)` : sécurisation des accès aux apps cloud (SaaS).\n\n**Services managés**\n- `SOC (Security Operations Center)` : surveillance 24/7, détection et réponse aux incidents.\n- `MDR (Managed Detection & Response)` : SOC externalisé avec investigation et remédiation incluses."
+      },
+      {
+        "title": "Zero Trust — l'architecture du moment",
+        "content": "**Principe** : 'Ne jamais faire confiance, toujours vérifier.' On abandonne le modèle château-fort (périmètre sécurisé) pour un modèle où chaque accès est vérifié en permanence.\n\n**Les 5 piliers Zero Trust** :\n- `Identity` : vérification forte de l'identité (MFA, SSO, Conditional Access)\n- `Devices` : postures de sécurité des terminaux (MDM, EDR)\n- `Network` : micro-segmentation, VPN vers ressources spécifiques\n- `Applications` : CASB, accès au minimum nécessaire\n- `Data` : classification, chiffrement, DLP\n\n**Comment le pitcher** : 'Vos collaborateurs travaillent de partout — bureau, domicile, déplacement. Le VPN classique ne protège plus rien. Zero Trust donne accès à chaque ressource spécifique après vérification — même si le poste est compromis, l'attaquant ne peut pas se déplacer latéralement.'\n\n**Référence marché** : Microsoft Entra ID (ancien Azure AD) + Intune = stack Zero Trust accessible pour les clients Office 365."
+      },
+      {
+        "title": "Comment parler à un RSSI",
+        "content": "Le RSSI est souvent le bloqueur n°1 sur les deals cyber. Il teste ta crédibilité avant tout.\n\n**Ce qu'il veut entendre** :\n- Que tu comprends son contexte réglementaire spécifique (DORA si banque, HDS si santé, LPM si OIV)\n- Des exemples concrets d'incidents similaires dans son secteur\n- Ta méthodologie précise (pas du vague)\n- Les CVs et certifications de tes consultants\n\n**Ce qu'il ne veut pas entendre** :\n- 'Nous sommes des experts en cybersécurité' sans preuves\n- Des slides marketing sans profondeur technique\n- 'Votre SI est sécurisé avec notre solution' (impossible à garantir)\n\n**Certifications à citer** : OSCP (Offensive Security), CISSP, CISM, ISO 27001 Lead Auditor, CEH\n\n**Astuce** : Toujours envoyer un agenda technique AVANT la réunion. Ça montre que tu respects son temps et tu filtres les interlocuteurs pas préparés."
+      }
+    ]
+  },
+  {
+    "id": "cyber-objections",
+    "title": "Cyber — Répondre aux objections",
+    "subtitle": "Les 10 objections les plus fréquentes et comment les retourner",
+    "theme": "cyber",
+    "type": "objections",
+    "read_time_min": 5,
+    "tags": ["rssi", "objections", "pentest", "budget"],
+    "sections": [
+      {
+        "title": "Objections budget",
+        "content": "**'On n'a pas de budget cyber cette année'**\nRetournement : 'Comprenez-vous. La question n'est pas d'avoir un budget cyber, c'est d'éviter une dépense non prévue. Un incident ransomware coûte en moyenne 4,5M€ — dont 60% en perte d'exploitation. Quel est votre budget de continuité d'activité ?' Puis proposer une entrée de gamme : audit à périmètre réduit, ou sensibilisation des équipes.\n\n**'Votre offre est trop chère vs les concurrents'**\nRetournement : 'Pouvez-vous me partager la démarche des concurrents ? Je veux comprendre ce qu'ils font pour ce prix.' Souvent le concurrent ne fait pas la même chose. Si vraiment comparable : jouer sur la qualité des consultants, les certifications, les références sectorielles."
+      },
+      {
+        "title": "Objections techniques",
+        "content": "**'On a déjà un antivirus, on est protégé'**\nRetournement : 'Un antivirus classique bloque les menaces connues. Les ransomwares modernes utilisent des techniques fileless qui contournent les antivirus à 100%. Un EDR (Endpoint Detection & Response) analyse les comportements, pas les signatures. La différence : l'antivirus cherche un criminel connu, l'EDR repère un comportement suspect même d'un inconnu.'\n\n**'Nos équipes IT gèrent la sécurité'**\nRetournement : 'Vos équipes IT sont excellentes dans leur domaine. La cybersécurité offensive est une spécialité à part entière — les attaquants sont 100% focalisés sur une chose : trouver vos failles. Nos pentesters font la même chose à plein temps. Ce n'est pas une question de compétences, c'est une question de focus.'"
+      },
+      {
+        "title": "Objections organisationnelles",
+        "content": "**'On vient de passer un audit, on est conformes'**\nRetournement : 'La conformité et la sécurité sont deux choses différentes. On peut être conforme ISO 27001 et se faire attaquer. La conformité dit que vous avez des processus en place — pas qu'ils résistent à une vraie attaque. C'est pour ça que le pentest vient compléter l'audit de conformité.'\n\n**'Notre prestataire actuel s'en occupe'**\nRetournement : 'Quel type de tests font-ils exactement ? Quand a eu lieu le dernier pentest ? Est-ce qu'ils testent aussi leur propre infrastructure ?' Ces questions créent souvent un blanc révélateur.\n\n**'On est trop petits pour être ciblés'**\nRetournement : 'En 2023, 60% des cyberattaques en France ont visé des PME et ETI. Les attaquants ne ciblent pas les entreprises par taille — ils ciblent les plus faciles à compromettre. La vraie question : êtes-vous plus facile que vos voisins ?'"
+      }
+    ]
+  }
+]

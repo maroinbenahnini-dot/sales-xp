@@ -27,6 +27,9 @@ export function XpBar() {
           <Link href="/library" className="hover:text-foreground transition-colors">
             Bibliothèque
           </Link>
+          <Link href="/materials" className="hover:text-foreground transition-colors hidden sm:block">
+            Sales Material
+          </Link>
         </nav>
 
         <div className="flex-1 flex items-center gap-3 max-w-xs ml-auto">
