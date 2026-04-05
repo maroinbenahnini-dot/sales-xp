@@ -11,6 +11,7 @@ interface Props {
 
 export default async function ScenarioPage({ params }: Props) {
   const { id } = await params
+
   const scenario = getScenario(id)
   if (!scenario) notFound()
 
@@ -18,7 +19,6 @@ export default async function ScenarioPage({ params }: Props) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) notFound()
 
-  // Find or create a run
   let { data: run } = await supabase
     .from('scenario_runs')
     .select('*')
